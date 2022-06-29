@@ -1,0 +1,42 @@
+[01-May-2022 11:43:06 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/sodhukno/public_html/partners/code.php on line 3
+[06-May-2022 16:14:42 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/sodhukno/public_html/partners/code.php on line 3
+[12-May-2022 22:38:34 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/sodhukno/public_html/partners/code.php on line 3
+[21-May-2022 15:30:43 UTC] PHP Warning:  include(include/config.php): Failed to open stream: No such file or directory in /home/sodhukno/public_html/partners/eml.php on line 2
+[21-May-2022 15:30:43 UTC] PHP Warning:  include(): Failed opening 'include/config.php' for inclusion (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/sodhukno/public_html/partners/eml.php on line 2
+[22-May-2022 22:44:27 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/sodhukno/public_html/partners/code.php on line 3
+[25-May-2022 12:05:01 UTC] PHP Warning:  include(conn.php): Failed to open stream: No such file or directory in /home/sodhukno/public_html/partners/qs-career.php on line 2
+[25-May-2022 12:05:01 UTC] PHP Warning:  include(): Failed opening 'conn.php' for inclusion (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/sodhukno/public_html/partners/qs-career.php on line 2
+[25-May-2022 12:05:01 UTC] PHP Warning:  include(head.php): Failed to open stream: No such file or directory in /home/sodhukno/public_html/partners/qs-career.php on line 63
+[25-May-2022 12:05:01 UTC] PHP Warning:  include(): Failed opening 'head.php' for inclusion (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/sodhukno/public_html/partners/qs-career.php on line 63
+[25-May-2022 12:05:01 UTC] PHP Warning:  include(header.php): Failed to open stream: No such file or directory in /home/sodhukno/public_html/partners/qs-career.php on line 68
+[25-May-2022 12:05:01 UTC] PHP Warning:  include(): Failed opening 'header.php' for inclusion (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/sodhukno/public_html/partners/qs-career.php on line 68
+[25-May-2022 12:05:01 UTC] PHP Warning:  include(footer.php): Failed to open stream: No such file or directory in /home/sodhukno/public_html/partners/qs-career.php on line 199
+[25-May-2022 12:05:01 UTC] PHP Warning:  include(): Failed opening 'footer.php' for inclusion (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/sodhukno/public_html/partners/qs-career.php on line 199
+[26-May-2022 09:57:54 UTC] PHP Warning:  require_once(vendor/autoload.php): Failed to open stream: No such file or directory in /home/sodhukno/public_html/partners/eml.php on line 5
+[26-May-2022 09:57:54 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'vendor/autoload.php' (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/sodhukno/public_html/partners/eml.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/sodhukno/public_html/partners/eml.php on line 5
+[26-May-2022 09:58:15 UTC] PHP Fatal error:  Uncaught Error: Class "PHPMailer\PHPMailer\PHPMailer" not found in /home/sodhukno/public_html/partners/eml.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/sodhukno/public_html/partners/eml.php on line 8
+[26-May-2022 10:40:03 UTC] PHP Fatal error:  Uncaught Error: Class "PHPMailer\PHPMailer\PHPMailer" not found in /home/sodhukno/public_html/partners/eml.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/sodhukno/public_html/partners/eml.php on line 8
+[26-May-2022 10:42:52 UTC] PHP Warning:  Undefined variable $email in /home/sodhukno/public_html/partners/eml.php on line 22
+[26-May-2022 10:42:52 UTC] PHP Warning:  Undefined variable $name in /home/sodhukno/public_html/partners/eml.php on line 22
+[26-May-2022 10:42:52 UTC] PHP Warning:  Undefined variable $name in /home/sodhukno/public_html/partners/eml.php on line 26
+[26-May-2022 10:42:52 UTC] PHP Warning:  Undefined variable $email in /home/sodhukno/public_html/partners/eml.php on line 28
+[26-May-2022 10:42:52 UTC] PHP Warning:  Undefined variable $verCode in /home/sodhukno/public_html/partners/eml.php on line 28
+[26-May-2022 10:42:52 UTC] PHP Warning:  Undefined variable $name in /home/sodhukno/public_html/partners/eml.php on line 30
+[26-May-2022 10:44:38 UTC] PHP Fatal error:  Uncaught Error: Class "PHPMailer\PHPMailer\PHPMailer" not found in /home/sodhukno/public_html/partners/eml.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/sodhukno/public_html/partners/eml.php on line 13
+[28-May-2022 03:59:21 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/sodhukno/public_html/partners/code.php on line 3
+[02-Jun-2022 20:34:41 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/sodhukno/public_html/partners/code.php on line 3
+[07-Jun-2022 22:01:29 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/sodhukno/public_html/partners/code.php on line 3
+[13-Jun-2022 16:59:53 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/sodhukno/public_html/partners/code.php on line 3
+[20-Jun-2022 02:42:58 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/sodhukno/public_html/partners/code.php on line 3
