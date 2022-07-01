@@ -413,7 +413,7 @@ $( function() {
         <td>Graphics</td>
         <td>Display</td>
         <td>Amount</td>
-        <td>Delete</td>
+        
         </tr>";
         
     while($crow = $query->fetch_assoc()){
@@ -428,8 +428,7 @@ $( function() {
       <td style='text-align:center;'>$crow[graphics1]</td>
       <td style='text-align:left;'>$crow[display1]</td>
       <td style='text-align:left;'>$crow[total_price]</td>
-      <td style='text-align:left;'><a href='del-temp-data.php?id=$crow[id]' class='btn btn-danger btn-flat'>
-        <i class='fa fa-save'></i> Del</a></td>
+      
       </tr>";
     }
     echo "</table>";    

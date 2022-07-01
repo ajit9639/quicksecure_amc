@@ -50,13 +50,13 @@
 
        $idd=$_GET['odid'];
         $pmmode="";$dlrid="";
-        // echo $sql = "SELECT a.*,c.staff_name FROM tbl_order_peripheral a, tbl_staff_master b, tbl_staff_master c where a.id='$idd' and a.staffid=b.staffid order by a.id desc";
-       $sql = "SELECT * from `tbl_order_peripheral` where `orderid`='$idd'";
+        // echo $sql = "SELECT a.*,c.staff_name FROM tbl_order a, tbl_staff_master b, tbl_staff_master c where a.id='$idd' and a.staffid=b.staffid order by a.id desc";
+       $sql = "SELECT * from `tbl_order` where `orderid`='$idd'";
         
         $query = mysqli_query($conn ,$sql);
         $row = mysqli_fetch_assoc($query);
           // echo $dlridd = $query['dealer_id'];
-        
+          $oddid = $row['orderid'];
           // if($row = $query->fetch_assoc()){
                 // exit();
                 $dlridd = $row['dealer_id'];
@@ -70,64 +70,65 @@
             // $dateTimeObj = date_create($row['sale_dt']); 
             // $dt1=date_format($dateTimeObj, "d-m-Y");
  
-         $sql1 = "SELECT * FROM tbl_dealer where id='$dlridd'";
-         $query1 = mysqli_query($conn , $sql1);
-        //  echo $getrow = mysqli_num_rows($query1);
-         $row1 = mysqli_fetch_assoc($query1);
-        // $query1 = $conn->query($sql1);
-        //   if($row1 = $query1->fetch_assoc()){} 
-        $dlrid=$row1['dealerid'];
-        ?>
+         $sql1 = "SELECT * FROM `tbl_staff_master` where id='$dlridd'";
+        $query1 = $conn->query($sql1);
+          if($row1 = $query1->fetch_assoc()){
+            $staffname = $row1['staff_name'];
+            $staffid = $row1['staffid'];
+            $staffcity = $row1['city'];
+
+          } ?>
+
 
                                                 <tr>
-
-                                                    <td valign='center'>Dealer Name : <?php echo $row1['dealer_name'] ?>
-                                                    </td>
-                                                    <td valign='center'>Dealer ID : <?php echo $row1['dealerid'] ?></td>
-                                                    <td valign='center'>Dealer City : <?php echo $row1['city'] ?></td>
-                                                    <td valign='center'>Order Id : <?php echo $row['orderid'] ?></td>
-                                                    <td valign='center'>Order Date : <?php echo $date ?></td>
-
-                                                    <td valign='center' colspan='2'>Payment Mode :
-                                                        <?php echo $row['payment_mode'] ?></td>
-                                                    <td valign='center' colspan='3'>Remarks :
-                                                        <?php echo $row['remarks'] ?></td>
-                                                    <td valign='center' colspan='3'>Attachment :
-                                                        <a href="upload/<?php echo $row['attachment'] ?>"
-                                                            download="dowmload"
-                                                            class="btn btn-danger btn-xs">Download</a>
-                                                    </td>
-
+                                                 
+                                                <td valign='center'>Staff Name : <?php echo $staffname ?></td>
+                                                <td valign='center' >Staff ID : <?php echo $staffid ?></td>
+                                                <td valign='center' >Staff City : <?php echo $row1['city'] ?></td>  
+                                                <td valign='center'>Order Id : <?php echo $staffcity ?></td>
+                                                <td valign='center'>Order Date : <?php echo $date ?></td>
+                                                
+                                                <td valign='center' colspan='2'>Payment Mode : <?php echo $row['payment_mode'] ?></td>
+                                                <td valign='center' colspan='3'>Remarks : <?php echo $row['remarks'] ?></td>
+                                                <td valign='center' colspan='3'>Attachment : 
+                                            <a href="upload/<?php echo $row['attachment'] ?>" download="dowmload" class="btn btn-danger btn-xs">Download</a>
+                                            </td>
+                                                                                                
                                                 </tr>
 
 
                                                 <tr>
                                                     <th>SNO. </th>
-                                                    <th colspan="4">Model No. </th>
-                                                    <th colspan="3">Brand. </th>
-                                                    <!-- <th colspan="4">RAM. </th> -->
-
+                                                    <th>Model No. </th>
+                                                    <th>Processor. </th>
+                                                    <th>RAM. </th>
+                                                    <th>HDD/SSD. </th>
+                                                    <th>OS. </th>
+                                                    <th>Graphics. </th>
+                                                    <th>Display. </th>
                                                     <th>Unit Price. </th>
                                                     <th>Qty. </th>
                                                     <th>GST% </th>
                                                     <th>GST Amount </th>
-                                                    <th>Total. </th>
+                                                    <th>Amount. </th>
                                                 </tr>
 
 
                                                 <?php 
 $s = 1;
-$sql1 = mysqli_query($conn , "SELECT * from `tbl_order_peripheral` where `orderid`='$idd'");
-// $inclusive_price_amt = $sql1['inclusive_price'];
+$sql1 = mysqli_query($conn , "SELECT * from `tbl_order` where `orderid`='$idd'");
 // $row22 = mysqli_fetch_array($sql1);
 while($row2 = mysqli_fetch_assoc($sql1)){
 ?>
                                                 <tr>
                                                     <td><?php echo $s ?> </td>
-                                                    <td colspan="4"><?php echo $row2['modalno'] ?> </td>
-                                                    <td colspan="3"><?php echo $row2['processor1'] ?> </td>
-                                                    <!-- <td colspan="4"><?php echo $row2['ram1'] ?> </td> -->
-
+                                                    <td><?php echo $row2['modalno'] ?> </td>
+                                                    <td><?php echo $row2['processor1'] ?> </td>
+                                                    <td><?php echo $row2['ram1'] ?> </td>
+                                                    <td><?php echo $row2['hddssd'] ?> </td>
+                                                    <td><?php echo $row2['os1'] ?> </td>
+                                                    <td><?php echo $row2['graphics1'] ?> </td>
+                                                    <td><?php echo $row2['display1'] ?> </td>
                                                     <td><?php echo $row2['unit_price'] ?> </td>
                                                     <td><?php echo $row2['qty'] ?> </td>
                                                     <td><?php echo $row2['gst_percentage'] ?>% </td>
@@ -139,7 +140,7 @@ $s++;
 } 
 
 
-$sql12 = mysqli_query($conn , "SELECT * from `tbl_order_peripheral` where `orderid`='$idd'");
+$sql12 = mysqli_query($conn , "SELECT * from `tbl_order` where `orderid`='$idd'");
 $row22 = mysqli_fetch_array($sql12);
 ?>
 
@@ -150,7 +151,7 @@ $row22 = mysqli_fetch_array($sql12);
                                                 <tr>
                                                     <td colspan="9"></td>
 
-                                                    <td colspan='2'><strong>Inclusive Price </strong></td>
+                                                    <td colspan='2'><strong>Sub Total </strong></td>
                                                     <td colspan='2'><?php echo $row22['inclusive_price'] ?></td>
                                                 </tr>
 
@@ -178,8 +179,9 @@ $row22 = mysqli_fetch_array($sql12);
                                         </table>
                                     </div>
                                     <hr>
-                                    <?php
-$get_my_data12 = mysqli_fetch_assoc(mysqli_query($conn , "SELECT * FROM `tbl_order_peripheral` WHERE `orderid`='$idd'"));
+
+<?php
+$get_my_data12 = mysqli_fetch_assoc(mysqli_query($conn , "SELECT * FROM `tbl_order` WHERE `orderid`='$oddid'"));
 $data11 = $get_my_data12['payment_mode'];
 $data12 = $get_my_data12['remarks'];
 $data13 = $get_my_data12['attachment'];
@@ -187,7 +189,6 @@ $data13 = $get_my_data12['attachment'];
 if(empty($data11) AND empty($data12) AND empty($data13)){
 
 ?>
-
                                     <form method="post" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label for="txtItemType" class="col-sm-2 control-label">Payment Mode</label>
@@ -202,13 +203,13 @@ if(empty($data11) AND empty($data12) AND empty($data13)){
                                             </div>
                                             <label for="txtRemarks" class="col-sm-1 control-label">Remarks</label>
                                             <div class="col-sm-2">
-                                                <input type="text" name="txtRemarks" id="txtRemarks" value="">
+                                                <input type="text" name="txtRemarks" id="txtRemarks" value="" required>
                                             </div>
 
                                             <label for="txtmyfile" class="col-sm-1 control-label"></label>
 
                                             <div class="col-sm-2">
-                                                <input type="file" id="attach_file" name="attach_file">
+                                                <input type="file" id="attach_file" name="attach_file" required>
                                             </div>
                                             <label for="txtsubmit" class="col-sm-1 control-label"></label>
                                             <div class="col-sm-1">
@@ -219,10 +220,10 @@ if(empty($data11) AND empty($data12) AND empty($data13)){
 
                                     </form>
                                     <?php 
-
 }else{
     echo "<a href='#' class='btn btn-success' onclick='print()'>Print</a>";
 }
+
 
 
 if(isset($_POST['print_submit'])){
@@ -235,9 +236,9 @@ if(isset($_POST['print_submit'])){
   $folder = "upload/".$filename;
   move_uploaded_file($tempname, $folder);
 
-//   echo $a ="UPDATE `tbl_order_peripheral` SET `payment_mode`='$txtPaymentMode',`remarks`='$txtRemarks',`attachment`='$filename' where `orderid`='$idd'";
+//   echo $a ="UPDATE `tbl_order` SET `payment_mode`='$txtPaymentMode',`remarks`='$txtRemarks',`attachment`='$filename' where `orderid`='$idd'";
 
-  $update_attachment = mysqli_query($conn ,"UPDATE `tbl_order_peripheral` SET `payment_mode`='$txtPaymentMode',`remarks`='$txtRemarks',`attachment`='$filename' ,`order_active`='active' where `orderid`='$idd'");
+  $update_attachment = mysqli_query($conn ,"UPDATE `tbl_order` SET `payment_mode`='$txtPaymentMode',`remarks`='$txtRemarks',`attachment`='$filename',`order_active`='active' where `orderid`='$idd'");
   if($update_attachment){
     echo "<script>
     
@@ -251,7 +252,6 @@ if(isset($_POST['print_submit'])){
     </script>";
   }
 }
-
 ?>
                                     <!--<button id="myBtn">Open Modal</button>-->
 

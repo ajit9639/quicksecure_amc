@@ -1,4 +1,6 @@
-<?php include 'includes/session.php'; ?>
+<?php
+error_reporting(0);
+ include 'includes/session.php'; ?>
 <?php include 'includes/header.php'; ?>
 
 <body class="hold-transition skin-blue sidebar-mini" onload="printPageArea('printableArea')">
@@ -58,16 +60,26 @@
             $dateTimeObj = date_create($row['sale_dt']); 
             $dt1=date_format($dateTimeObj, "d-m-Y");
             $dlid2 = $row['dealer_name'];
-
+            $attach = $row['payment_attachment'];
  
-         $sql1 = "SELECT * FROM tbl_dealer where dealerid='$dlid2' order by id desc";
+         $sql1 = "SELECT * FROM tbl_dealer where id='$dlid2' order by id desc";
         $query1 = $conn->query($sql1);
-          if($row1 = $query1->fetch_assoc()){$dlrid=$row1['dealerid'];}
+          if($row1 = $query1->fetch_assoc()){
+            
+            $dlrid=$row1['dealerid'];
+            $dlnm=$row1['dealer_name'];
+            $dlcity=$row1['city'];
+          
+          }
 
             echo "
             <tr>
-              <td><strong>Dealer Name </strong></td><td><strong>:</strong></td>
-              <td valign='center' colspan='3'><font size='5'>".$row1['dealer_name'].' : '.$dlid2."</font></td>
+            
+
+
+              <td><strong>Dealer Id </strong></td><td><strong>:</strong></td><td valign='center'>".$dlrid."</td>
+  
+              <td><strong>Dealer City </strong></td><td><strong>:</strong></td><td valign='center'>".$dlcity."</td>
  
             </tr>            
             <tr>
@@ -146,7 +158,7 @@
             </tr>       
             <tr>  
               <td><strong>Payment Attachment </strong></td><td><strong>:</strong></td>
-              <td><img src='upload/".$row['payment_attachment']."' style='width:250px;height:auto;'></td>
+              <td><a href='upload/$attach' class='btn btn-xs btn-success'>Attachment</a> </td>
          
  
             </tr>                                                      
@@ -183,9 +195,9 @@ if ($pmode==""){
                                     <script type="text/javascript">
                                     //window.location.href="amc-sale.php" ;
 
-                                    setTimeout(function() {
-                                        window.location.href = 'amc-sale.php';
-                                    }, 5000);
+                                    // setTimeout(function() {
+                                    //     window.location.href = 'amc-sale.php';
+                                    // }, 5000);
                                     </script>
 
                                     <?php
@@ -224,9 +236,9 @@ if ($pmode==""){
                                     <script type="text/javascript">
                                     //window.location.href="amc-sale.php" ;
 
-                                    setTimeout(function() {
-                                        window.location.href = 'amc-sale.php';
-                                    }, 5000);
+                                    // setTimeout(function() {
+                                    //     window.location.href = 'amc-sale.php';
+                                    // }, 5000);
                                     </script>
                                     <?php	
 		}

@@ -30,14 +30,18 @@
       <table id="example1" class="table table-bordered" style="width:100%;">
         <thead style="background-color: #80CBC4;">
           <th>ID</th>
-          <th>Sl. No.</th>
-          <th>Date</th>
-          <th>Item Category</th>
+          <th>Order Id</th>
+          <th>Order Date</th>
+          <th>Dealer Id / City</th>
           <th>QTY</th>
-          <th>Total Amt</th>
-          <th>Dealer ID</th>
-          <th>Remarks</th>
-          <th>View Detail</th>
+          <th>GST%</th>
+          <th>GST Amount</th>
+          <th>Total Amount</th>
+          <th>Payment Mode</th>
+          <th>Order Status</th>
+          <th>Remark</th>
+          <th>Attachment</th>
+          <th>Update Status</th>
          <!-- <th>Tools</th>-->
         </thead>
         <tbody>
@@ -46,18 +50,31 @@
         $sql = "SELECT * FROM tbl_amc_sale_dealer order by id desc";
         $query = $conn->query($sql);
           while($row = $query->fetch_assoc()){
-                                  
+            $attach = $row['payment_attachment'] ;   
+            $delamc = $row['id'];
+            $delnm = $row['dealer_name'];
+            
+            
+            $getdelnm = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM `tbl_dealer` WHERE `id`='$delnm'"));
+            $delid = $getdelnm['id'].$row['id'];
+            $delcity = $getdelnm['city'];
             echo "
             <tr>
               <td valign='center'>".$row['id']."</td>
-              <td valign='center'><a href='amc-sale-dealer.php?amcsid=".$row['id']."'>QSAMC".$row['id']."</a></td>
+              <td valign='center'><a href='amc-sale-dealer.php?amcsid=".$row['id']."'>QSDL0".$row['id']."</a></td>
               <td valign='center'>".$row['sale_dt']."</td>
-              <td>".$row['item_category']."</td>
+              <td>QSDL0$delid / $delcity</td>
+              
               <td>".$row['qty']."</td>
+              <td>".$row['gst']."</td>
+              <td>".$row['gstamt']."</td>
               <td>".$row['tot_amt']."</td>
-              <td>".$row['dealer_name']."</td>
-              <td>".$row['remarks']."</td>
-              <td><a href='amc-sale-dealer.php?amcsid=".$row['id']."' class='btn btn-info btn-sm btn-flat'><i class='fa fa-eye'></i> View Detail</a></td>
+              <td>".$row['payment_option']."</td>
+              <td valign='center'>".$row['order_status']."</td>
+              <td>".$row['payment_remarks']."</td>
+              <td><a href='upload/$attach' class='btn btn-success btn-xs'>Attachment</a>   </td>
+              <td><a href='update_order_amc.php?id=$delamc' class='btn btn-xs btn-success'>Update Status</a></td>
+              
 
             </tr>";
                     }

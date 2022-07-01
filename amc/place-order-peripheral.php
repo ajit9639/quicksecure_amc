@@ -87,7 +87,8 @@ include 'includes/session.php'; ?>
                           }
                       ?>
 
-                                <form role="form" method="POST" action="ins_data-peripherals.php" name="frmForm" id="frmForm">
+                                <form role="form" method="POST" action="ins_data-peripherals.php" name="frmForm"
+                                    id="frmForm">
                                     <input type="hidden" name="txtRate" id="txtRate" value="<?php echo $rt;?>">
 
                                     <table width="100%">
@@ -101,12 +102,11 @@ include 'includes/session.php'; ?>
           }   
 
 
-          $dealer_id_name =  $_SESSION['deal_id'];
+          $dealer_id_name =  $_SESSION['staffid'];
 // $ordrid = 'QSDL' . str_pad(($tempid + 1), 3, '0', STR_PAD_LEFT);
-// $ordrid = $dealer_id_name . str_pad(($tempid + 1), 3, '-', STR_PAD_LEFT);
+// $ordrid = $dealer_id_name . str_pad(($tempid + 1),  '-', STR_PAD_LEFT);
 $ordrid = $dealer_id_name.'-PH-'. ($tempid + 1);
-$_SESSION['ordrid'] = $ordrid;
-?>
+?>   
 
                                             <td><input type="text" name="txtOrderID" id="txtOrderID"
                                                     class="form-control" value="<?php echo $ordrid;?>" readonly></td>
@@ -118,8 +118,8 @@ $_SESSION['ordrid'] = $ordrid;
                                             <td>&nbsp;&nbsp;</td>
                                             <td>Product</td>
                                             <td>
-                                                <input type="text" name="txtProductType" id="txtProductType" class="form-control"
-                                                    value="peripharel" readonly>
+                                                <input type="text" name="txtProductType" id="txtProductType"
+                                                    class="form-control" value="peripharel" readonly>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -170,7 +170,7 @@ $_SESSION['ordrid'] = $ordrid;
                                                 </div>
                                             </td>
                                         </tr>
-                                       
+
                                         <tr>
                                             <!-- <td>
                                                 <div class="form-group">
@@ -223,7 +223,7 @@ $_SESSION['ordrid'] = $ordrid;
 
                                         <!-- gst -->
                                         <tr>
-                                        <td>
+                                            <td>
                                                 <div class="form-group">
                                                     <label>Total Exclusive Price</label>
                                                     <input type="text" class="form-control pull-right" id="txtExPrice"
@@ -254,7 +254,7 @@ $_SESSION['ordrid'] = $ordrid;
                                         </tr>
 
                                         <tr>
-                                        <td>
+                                            <td>
                                                 <div class="form-group">
                                                     <label>Total Price</label>
                                                     <input type="text" class="form-control pull-right" id="txtTotPrice"
@@ -394,9 +394,9 @@ $_SESSION['ordrid'] = $ordrid;
                                         },
                                         select: function(event, ui) {
                                             $('#txtProcessor').val(ui.item
-                                            .label); // display the selected text
+                                                .label); // display the selected text
                                             $('#txtRam').val(ui.item
-                                            .value); // save selected id to input        
+                                                .value); // save selected id to input        
                                             return false;
                                         },
                                         focus: function(event, ui) {
@@ -434,7 +434,7 @@ $_SESSION['ordrid'] = $ordrid;
        
         
         <td>Amount</td>
-        
+     
         </tr>";
         
     while($crow = $query->fetch_assoc()){
@@ -448,7 +448,7 @@ $_SESSION['ordrid'] = $ordrid;
       
       
       <td style='text-align:left;'>$crow[total_price]</td>
-      
+     
       </tr>";
     }
     echo "</table>";    

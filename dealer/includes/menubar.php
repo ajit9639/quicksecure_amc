@@ -4,6 +4,7 @@ $dealer_id_name = $user['dealerid'];
 // $dealer_id_name1 = $_SESSION["$dealer_id_name"];
 $_SESSION["deal_id"] = $user['dealerid'];
 $_SESSION["deal_name"] = $user['store_name'];
+$_SESSION["city"] = $user['city'];
 ?>
 
 

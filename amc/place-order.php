@@ -104,10 +104,10 @@ include 'includes/session.php'; ?>
           }   
 
 
-          $dealer_id_name =  $_SESSION['staffid'];;
+          $dealer_id_name =  $_SESSION['staffid'];
 // $ordrid = 'QSDL' . str_pad(($tempid + 1), 3, '0', STR_PAD_LEFT);
 // $ordrid = $dealer_id_name . str_pad(($tempid + 1),  '-', STR_PAD_LEFT);
-$ordrid = $dealer_id_name.'-'. ($tempid + 1);
+$ordrid = $dealer_id_name.'-CL-'. ($tempid + 1);
 ?>   
 
     <td><input type="text" name="txtOrderID" id="txtOrderID" class="form-control" value="<?php echo $ordrid;?>" readonly></td>

@@ -32,7 +32,7 @@ include 'includes/session.php';
 		$stfid = $_SESSION['dlrid'];
 		 
 
-		$sql = "insert into tbl_amc_sale_dealer (sale_dt,item_type,purchase_year,item_category,brand_name,item_description,package_name,no_year,qty,basic_price,gst,gstamt,tot_amt,customer_name,mob_no,email,address,pin_code,city1,state1,dealer_name,staffid,remarks) values('$tDate','$tItemType','$tPurchaseYear','$tItemCategory','$tBrandName','$tItemDescription','$tPackageName','$tYrofAMC','$tQTY','$tPrice','$tGST','$tGSTAmt','$tTotAmt','$tCustomerName','$tMobileNo','$tEMail','$tAddress','$tPinCode','$tCity','$tState','$tDealerName','$stfid','$tRemarks')";
+		$sql = "insert into tbl_amc_sale_dealer (sale_dt,item_type,purchase_year,item_category,brand_name,item_description,package_name,no_year,qty,basic_price,gst,gstamt,tot_amt,customer_name,mob_no,email,address,pin_code,city1,state1,dealer_name,staffid,remarks,  payment_option,order_status) values('$tDate','$tItemType','$tPurchaseYear','$tItemCategory','$tBrandName','$tItemDescription','$tPackageName','$tYrofAMC','$tQTY','$tPrice','$tGST','$tGSTAmt','$tTotAmt','$tCustomerName','$tMobileNo','$tEMail','$tAddress','$tPinCode','$tCity','$tState','$tDealerName','$stfid','$tRemarks','','Pending')";
 
 		if($conn->query($sql)){
 

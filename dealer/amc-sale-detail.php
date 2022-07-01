@@ -69,16 +69,17 @@ Bistupur, Jamshedpur-831001, Jharkhand.<br>
         $query1 = $conn->query($sql1);
           if($row1 = $query1->fetch_assoc()){$dlrnm=$row1['dealer_name'];}
               $del_nm = $_SESSION["deal_name"];
+              $del_city = $_SESSION["city"];
             echo "
             <tr>
               <td><strong>Dealer Name </strong></td><td><strong>:</strong></td>
               <td valign='center'><font >".$del_nm."</font></td>
 
              <td><strong>Dealer Id </strong></td><td><strong>:</strong></td>
-              <td valign='center'><font >".$dlid1."</font></td>
+              <td valign='center'><font >QSDL0".$dlid1."</font></td>
             </tr>            
             <tr>
-              <td><strong>ID </strong></td><td><strong>:</strong></td><td valign='center'>".$row['id']."</td>
+              <td><strong>Dealer City	 </strong></td><td><strong>:</strong></td><td valign='center'>".$del_city."</td>
   
               <td><strong>AMC ID </strong></td><td><strong>:</strong></td><td valign='center'>QSAMC".$row['id']."</td>
             </tr>
@@ -137,7 +138,9 @@ Bistupur, Jamshedpur-831001, Jharkhand.<br>
             <tr>  
               <td><strong>Pin Code </strong></td><td><strong>:</strong></td><td>".$row['pin_code']."</td>
          
-              <td><strong>Bill Copy </strong></td><td><strong>:</strong></td><td><img src='upload/".$attchmt."' style='width:250px;height:auto;'></td>
+              <td><strong>Bill Copy </strong></td><td><strong>:</strong></td><td>
+              <a href='upload/".$attchmt."' class='btn btn-xs btn-success' target='_blank'>Attachment</a>
+              </td>
             </tr>                                    
             ";
 

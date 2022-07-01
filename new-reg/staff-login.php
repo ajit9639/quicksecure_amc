@@ -15,7 +15,7 @@ if(isset($_POST['login']))
  	$usrtype="Dealer";
  	$dlrnm = $_POST['txtDealerName'];
  
-
+// echo "SELECT * FROM tbl_staff_master WHERE uid='$uid' and status='Y'";exit();
 $query=mysqli_query($conn,"SELECT * FROM tbl_staff_master WHERE uid='$uid' and status='Y'");
 $num=mysqli_fetch_array($query);
 

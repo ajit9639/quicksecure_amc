@@ -55,7 +55,7 @@
         
         $query = mysqli_query($conn ,$sql);
         $row = mysqli_fetch_assoc($query);
-          // echo $dlridd = $query['dealer_id'];
+        //   $dlridd = $query['dealer_id'];
         
           // if($row = $query->fetch_assoc()){
                 // exit();
@@ -70,21 +70,23 @@
             // $dateTimeObj = date_create($row['sale_dt']); 
             // $dt1=date_format($dateTimeObj, "d-m-Y");
  
-         $sql1 = "SELECT * FROM tbl_dealer where id='$dlridd'";
-         $query1 = mysqli_query($conn , $sql1);
-        //  echo $getrow = mysqli_num_rows($query1);
-         $row1 = mysqli_fetch_assoc($query1);
-        // $query1 = $conn->query($sql1);
-        //   if($row1 = $query1->fetch_assoc()){} 
-        $dlrid=$row1['dealerid'];
-        ?>
+         $sql1 = "SELECT * FROM `tbl_staff_master` where id='$dlridd'";
+        $query1 = $conn->query($sql1);
+          if($row1 = $query1->fetch_assoc()){
+            
+            $staff_name = $row1['staff_name'];
+            $staff_id = $row1['staffid'];
+            $staff_city = $row1['city'];
+            
+            } ?>
+
 
                                                 <tr>
 
-                                                    <td valign='center'>Dealer Name : <?php echo $row1['dealer_name'] ?>
+                                                    <td valign='center'>Staff Name : <?php echo $staff_name ?>
                                                     </td>
-                                                    <td valign='center'>Dealer ID : <?php echo $row1['dealerid'] ?></td>
-                                                    <td valign='center'>Dealer City : <?php echo $row1['city'] ?></td>
+                                                    <td valign='center'>Staff ID : <?php echo $staff_id ?></td>
+                                                    <td valign='center'>Staff City : <?php echo $staff_city ?></td>
                                                     <td valign='center'>Order Id : <?php echo $row['orderid'] ?></td>
                                                     <td valign='center'>Order Date : <?php echo $date ?></td>
 

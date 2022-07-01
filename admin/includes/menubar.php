@@ -13,7 +13,7 @@
         <img src="<?php echo (!empty($user['photo'])) ? 'images/'.$user['photo'] : 'images/profile.jpg'; ?>" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p><?php // echo $user['user_type']; ?></p>
+        <p>Admin</p>
        <!-- <a><i class="fa fa-circle text-success"></i> Online</a>-->
       </div>
     </div>
@@ -72,10 +72,7 @@
           <li><a href="order-detail-history.php"><i class="fa fa-circle-o"></i>Items Orders</a></li>
           <li><a href="amc-sale-history-by-dealer.php"><i class="fa fa-circle-o"></i> AMC Sales</a></li>
           <li><a href="periferals-detail-from-dealer.php"><i class="fa fa-circle-o"></i> Peripherals Sales</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Delivered Orders</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i>Return Orders</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i>Invoice</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i>Payment History</a></li>
+          
           <li><a href="#"><i class="fa fa-circle-o"></i>Reports</a></li>
         </ul>
       </li> 
@@ -89,11 +86,13 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="amc-sale-history.php"><i class="fa fa-circle-o"></i>AMC Sales</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Distribution Orders</a></li>
+
           
-          <li><a href="#"><i class="fa fa-circle-o"></i>Invoice</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i>Payment History</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i>Reports</a></li>
+          <li><a href="order-detail-history-staff.php"><i class="fa fa-circle-o"></i>Items Orders</a></li>
+
+          <li><a href="order-detail-peripheral-staff.php"><i class="fa fa-circle-o"></i> Peripherals Sales</a></li>
+
+          
         </ul>
       </li> 
 

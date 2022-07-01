@@ -32,7 +32,20 @@
           <th>ID</th>
           <th>AMC ID</th>
           <th>Date</th>
-          <th>PC Type</th>
+
+          <th>Dealer ID / City</th>
+          <th>GST %</th>
+          <th>GST Amount</th>
+          <th>Total Amount</th>
+          <th>Payment Mode</th>
+          <th>Order Status</th>
+          <th>Remarks</th>
+          <th>Attachment</th>
+          <th>Update Status</th>
+
+
+
+          <!-- <th>PC Type</th>
           <th>Purchase Year</th>
           <th>Category</th>
           <th>Brand Name</th>
@@ -47,7 +60,7 @@
           
           <th>Payment Option</th>
           <th>payment Remarks</th>
-          <th>Attchment</th>
+          <th>Attchment</th>-->
            
         </thead>
         <tbody>
@@ -62,23 +75,20 @@
               <td valign='center'>".$row['id']."</td>
               <td valign='center'><a href='amc-sale-detail.php?amcsid=".$row['id']."'>QSAMC".$row['id']."</a></td>
               <td>".$row['sale_dt']."</td>
-              <td>".$row['item_type']."</td>
-              <td>".$row['purchase_year']."</td>
-              <td>".$row['item_category']."</td>
-              <td>".$row['brand_name']."</td>
-              <td>".$row['item_description']."</td>
-
-              <td>".$row['package_name']."</td>
-              <td>".$row['no_year']."</td>
-              <td>".$row['qty']."</td>
-              <td>".$row['basic_price']."</td>
+              <td>QSDL0".$row['dealer_name'].' / '.$row['city1']."</td>
+              
+              <td>".$row['gst']."</td>
               <td>".$row['gstamt']."</td>
               <td>".$row['tot_amt']."</td>
-              <td>Pending</td>
-              
-              <td>".$row['payment_option']."</td>
               <td>".$row['payment_remarks']."</td>
-              <td><a href='upload/".$row['payment_attachment']."' target='_blank' class='btn btn-success'>Attacment</a></td>
+              <td>".$row['order_status']."</td>
+
+              
+
+              <td>".$row['payment_remarks']."</td>
+              <td><a href='upload/".$row['payment_attachment']."' target='_blank' class='btn btn-xs btn-success'>Attacment</a></td>
+              <td><a href='' target='_blank' class='btn btn-xs btn-success'>Update Status</a></td>
+              
 
             </tr>";
                     }

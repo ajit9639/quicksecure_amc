@@ -250,7 +250,7 @@
 
       <label for="txtYrofAMC" class="col-sm-2 control-label">Year of AMC</label>
         <div class="col-sm-4">
-          <input type="text" value="<?php echo $amc_year;?>" readonly id="txtYrofAMC" class="form-control">
+          <input type="text" value="<?php echo $amc_year;?>" readonly id="txtYrofAMC" name="txtYrofAMC" class="form-control">
          <!-- <select class="form-control" name="txtYrofAMC" id="txtYrofAMC">
             <option value="-" selected>--Select--</option> 
             <option value="1">1 Yr</option>

@@ -15,28 +15,24 @@ $dt = $dd."-".$mm."-".$yy;
  $dlrid = $_SESSION['id'];
 
 
-//echo "= ".$dlrid;
 
-//exit();
 
-         $sql = "SELECT max(id) as mxid FROM tbl_order order by id desc";
+         $sql = "SELECT max(id) as mxid FROM tbl_order_peripheral order by id desc";
         $query = $conn->query($sql);
           if($row = $query->fetch_assoc()){
 			$tempid=$row['mxid'];
           }		
 
-$staff_id = $_SESSION['staffid'];
-$staff_name = $_SESSION['staffname'];
-
-
+// $dealer_id_name1 = $_SESSION['deal_id'];
 // $ordrid = 'QSDL' . str_pad(($tempid + 1), 3, '0', STR_PAD_LEFT);
 // $ordrid = $dealer_id_name1 . str_pad(($tempid + 1), 3, '-', STR_PAD_LEFT);
+$ordrid = 'QSEM0'.'-PH-'. ($tempid + 1);;
 
-$ordrid = $staff_id.'-'. ($tempid + 1);
 
+ 
 //=============================================================
 
-    $sql   = "select * from tbl_demo where dealerid='$dlrid'";
+    $sql   = "select * from tbl_demo_peripheral where dealerid='$dlrid'"; 
     $query = $conn->query($sql);
     while($crow = $query->fetch_assoc()){
 		// $pro = $crow['product'];
@@ -44,10 +40,8 @@ $ordrid = $staff_id.'-'. ($tempid + 1);
 		$modalno2 = $crow['modalno'];
 		$processor2 = $crow['processor1'];
 		$ram2 = $crow['ram1'];
-		$hddssd2 = $crow['hddssd'];
-		$os2 = $crow['os1'];
-		$graphics2 = $crow['graphics1'];
-		$display2 = $crow['display1'];
+		
+		
 		$qty2 = $crow['qty'];
 
 		$unit_price = $crow['unit_price'];
@@ -63,25 +57,24 @@ $ordrid = $staff_id.'-'. ($tempid + 1);
 		$pro= $crow['product'];
 
 // $tamt = $qty2 * $price2;
-$dlrname = $staff_name;
+// $dlrname = $_SESSION['user'];
 
-   $sql = "INSERT INTO tbl_order (orderid,order_date,dealer_id,dealer_name,product,modalno,processor1,ram1,hddssd,os1,graphics1,display1,    qty,unit_price,inclusive_price,exclusive_price,gst_percentage,gst_amount,total_price,order_status) VALUES ('$ordrid','$dt','$dealerid2','$dlrname','$pro','$modalno2','$processor2','$ram2','$hddssd2','$os2','$graphics2','$display2',      '$qty2','$unit_price','$inclusive_price','$exclusive_price','$gst_percentage','$gst_amount','$total_price','pending')";
+     $sql = "INSERT INTO `tbl_order_peripheral`(`orderid`, `order_date`, `dealer_id`, `product`, `modalno`, `processor1`, `ram1`, `qty`, `unit_price`, `inclusive_price`, `exclusive_price`, `gst_percentage`, `gst_amount`, `total_price`, `payment_mode`, `remarks`, `attachment`, `order_status`) VALUES 
+	 ('$ordrid','$dt','$dealerid2','$pro','$modalno2','$processor2','$ram2','$qty2','$unit_price','$inclusive_price','$exclusive_price','$gst_percentage','$gst_amount','$total_price','','','','pending')";
 // exit();
             if (mysqli_query($conn, $sql)) {
+
 				
                echo "<script>alert('Record saved successfully')</script>";
-			//    echo '<script>header("location:ins-order-data.php?dlrid='$ordrid'")</script>';
-			
                
             }else{echo $conn->error;}	
      }	   	
 
  
 
- 		$sql2 = "delete from tbl_demo where dealerid='$dlrid'";
+ 		$sql2 = "delete from tbl_demo_peripheral where dealerid='$dlrid'";
 		if($conn->query($sql2)){}    	
 
-    //   echo "<script>window.location.href='order-detail.php'</script>"; 
-	echo "<script>window.location.href='order-detail-view.php?odid=$ordrid'</script>"; 
-	
+    //   echo "<script>window.location.href='order-detail-peripheral.php'</script>"; 
+	echo "<script>window.location.href='order-detail-view-peripheral.php?odid=$ordrid'</script>"; 
 ?>

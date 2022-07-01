@@ -3,7 +3,7 @@
 $_SESSION['staffid'] = $user['staffid'];
 $_SESSION['staffname'] = $user['staff_name'];
 $_SESSION['emp_img'] = $user['emp_img'];
-$delid = $_SESSION['dealerid'];
+// $delid = $_SESSION['dealerid'];
 ?>
 
 <aside class="main-sidebar" style="background-color:#546E7A;">
@@ -40,12 +40,16 @@ $delid = $_SESSION['dealerid'];
 
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
-      <li class="header" style="text-align:center;color:#ffffff;"> Dealer : <?php echo $_SESSION['dlrnm']; ?> / <?php echo $_SESSION['dealerid']; ?></li>
+      <li class="header" style="text-align:center;color:#ffffff;"> Dealer : <?php echo $_SESSION['dlrnm']; ?> / <?php echo $_SESSION["deal_id"]; ?></li>
       
 
       <li class=""><a href="./"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-      <li class=""><a href="place-order.php"><i class="fa fa-circle-o"></i> <span>Place Order</span></a></li>
-      <li class=""><a href="order-detail.php"><i class="fa fa-circle-o"></i> <span>Order History </span></a></li>
+      <li class=""><a href="place-order.php"><i class="fa fa-circle-o"></i> <span>Place Order ( L / D )</span></a></li>
+      <li class=""><a href="order-detail.php"><i class="fa fa-circle-o"></i> <span>Order History ( L / D ) </span></a></li>
+
+      <li class=""><a href="place-order-peripheral.php"><i class="fa fa-circle-o"></i> <span>Place Order ( P )</span></a></li>
+      <li class=""><a href="order-detail-peripheral.php"><i class="fa fa-circle-o"></i> <span>Order History ( P ) </span></a></li>
+
       <li class=""><a href="amc-sale.php"><i class="fa fa-circle-o"></i> <span>Sale AMC</span></a></li>
       <li class=""><a href="amc-detail.php"><i class="fa fa-circle-o"></i> <span>AMC History </span></a></li>
       <!--li class="header">MANAGE</li-->

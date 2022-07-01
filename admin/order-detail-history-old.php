@@ -43,6 +43,7 @@
                                             <th>Remarks</th>
                                             <th>Attachment</th>
                                             <th>Edit Status</th>
+                                            <th>Update</th>
 
                                         </thead>
                                         <tbody>
@@ -50,13 +51,10 @@
         $sql = "SELECT * FROM tbl_order order by id desc";
         $query = $conn->query($sql);
           while($crow = $query->fetch_assoc()){
-                                  $idd = $crow['orderid'];
-                                  $attach = $crow['attachment'];
-
                                   
       echo "<tr><td style='text-align:center;'>
       <input type='hidden' style='width:20px;border-width:0px;border:none;background: transparent;' id='txtN' name='txtN' value='$crow[id]' readonly>$crow[id]</td>
-      <td style='text-align:center;'><a href='order-detail-view.php?odid=$crow[orderid]'>$crow[orderid]</a></td>
+      <td style='text-align:center;'>$crow[orderid]</td>
       <td style='text-align:center;'>$crow[order_date]</td>
       <td style='text-align:center;'>$crow[dealer_name] / QSDL$crow[dealer_id]</td>
       
@@ -74,14 +72,59 @@
 
       <td style='text-align:center;'>$crow[remarks]</td>
 
-      <td style='text-align:center;'><a href='../dealer/upload/$attach' class='btn btn-xs btn-success'>Attachment</a></td>
-      <td style='text-align:center;'><a href='update_order.php?id=$idd' class='btn btn-xs btn-success'>Update Status</a></td>
-  
+      <td style='text-align:center;'>$crow[attachment]</td>
+      
+      <td style='text-align:center;'>
 
 
-                                        
+<select class='form-control' name='txtPaymentMode' id='txtPaymentMode'          onchange='getText(this)' required>
+                                                    
+                                            </option>
+                                            <option value='>$crow[orderid]'>$crow[orderid]</option>
+                                            
+                                            <option value='Pending Order'>Pending Order</option>
+                                            <option value='Delevered Order'>Delevered Order</option>
+                                            <option value='Delevered Order'>Delevered Order</option>
+                                            <option value='Return Order'>Return Order</option>
+                                            <option value='Cancel Order'>Cancel Order</option>
+                                            <option value='Placed Order'>Placed Order</option>
+                                            </select>
+                                            </td>
+
+                                            </select>
+
+                                            <div id='myModal' class='modal'>                                               
+                                            <div class='modal-content'>
+                                                <span class='close' id='close'>&times;</span>
+                                                <form method='POST' action=''>
+                                                     <div class='form-group'>
+                                                        <label for='email'>Order Status1:</label>
+                                                        <select class='form-control' name='status1' id='type' important>
+                                                            <option selected disabled>Select Order Status</option>
+                                                            <option value='Pending_Order'>Pending Order</option>
+                                                            <option value='Delevered_Order' >Delevered Order</option>
+                                                            <option value='Return_Order'>Return Order</option>
+                                                            <option value='Cancel_Order'>Cancel Order</option>
+                                                            <option value='Placed_Order'>Placed Order</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class='form-group'>
+                                                        <label for='email'>Enter Remarks:</label>
+                                                        <textarea type='text' class='form-control' id='rem'
+                                                            placeholder='Enter Remarks' name='remarks1' important></textarea>
+                                                    </div>
+
+                                                    <button type='button' id='btnSubmit' name='update_me' class='btn btn-default'>Submit</button>
+                                                </form>
+                                            </div>
+                                        </div>
+
                                             </tr>
-                                                                                                                                                                                
+                                            
+                                            
+                                            
+                                            
                                             ";
                                             }
                                             ?>
@@ -128,6 +171,31 @@
             }
         });
     }
+    </script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+            $("#btnSubmit").click(function(e) {
+                e.preventDefault();
+
+                // BUILD DATA STRING
+                var id = $("#txtPaymentMode").val();
+                var type = $("#type").val();
+                var remark = $("#rem").val();
+                var dataString = "id=" + id + "type=" + type + "&remark=" + remark;
+                alert(type); 
+
+                // $.ajax({
+                //     type: 'POST',
+                //     url: 'update_order.php',
+                //     data: dataString,
+                //     success: function(data) {
+                //        alert("data is updated successfully");
+                //     }
+                // });
+              
+            });
+        });
     </script>
 
 
