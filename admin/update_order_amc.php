@@ -9,8 +9,9 @@ $get_all = mysqli_fetch_assoc(mysqli_query($conn , "SELECT * FROM `tbl_amc_sale_
  if(isset($_POST['update_me'])){
     $status1 = $_POST['status1'];
     $remarks1 = $_POST['remarks1'];
+    $date = $_POST['date'];
 
-    $update = mysqli_query($conn , "UPDATE `tbl_amc_sale_dealer` SET `payment_remarks`='$remarks1',`order_status`='$status1'  WHERE `id`='$id'");
+    $update = mysqli_query($conn , "UPDATE `tbl_amc_sale_dealer` SET `payment_remarks`='$remarks1',`order_status`='$status1',`status_date`='$date'  WHERE `id`='$id'");
  
     if($update){
         echo "<script>window.location.replace('amc-sale-history-by-dealer.php')</script>";
@@ -47,9 +48,7 @@ $get_all = mysqli_fetch_assoc(mysqli_query($conn , "SELECT * FROM `tbl_amc_sale_
             <select class='form-control' name='status1' important>
                 <option selected disabled><?php echo  $get_all['order_status']?></option>                
 
-                <option value='Pending_Order'>Pending Order</option>
-                <option value='Delevered_Order'>Delivered Order</option>
-                <option value='Return_Order'>Return Order</option>
+                <option value='Pending_Order'>Pending Order</option>               
                 <option value='Cancel_Order'>Cancel Order</option>
                 <option value='Placed_Order'>Placed Order</option>
             </select>
@@ -59,6 +58,12 @@ $get_all = mysqli_fetch_assoc(mysqli_query($conn , "SELECT * FROM `tbl_amc_sale_
             <label for='email'>Enter Remarks:</label>
             <textarea type='text' class='form-control' placeholder='Enter Remarks' name='remarks1' important><?php echo $get_all['remarks']?></textarea>
         </div>
+
+        <div class='form-group'>
+            <label for='email'>Enter Remarks:</label>
+            <input type='date' class='form-control' name='date' important value='<?php echo $get_all['status_date']?>'>
+        </div>
+
 
         <button type='submit' name='update_me' class='btn btn-success'>Update</button>
     </form>

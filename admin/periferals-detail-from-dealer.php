@@ -48,7 +48,8 @@
                                         </thead>
                                         <tbody>
                                             <?php //
-        $sql = "SELECT * FROM tbl_order_peripheral order by id desc";
+        // $sql = "SELECT * FROM tbl_order_peripheral where `type`='dealer' order by id desc";
+        $sql = "SELECT sum(qty) as qty1,sum(`gst_amount`) as gst1,sum(`total_price`) as total1,`dealer_id`,`qty`,`gst_percentage`,`gst_amount`,`total_price`,`order_date`,`remarks`,`order_status`,`payment_mode`,`orderid`,`attachment`,`status_date`,`id` FROM `tbl_order_peripheral` where `type`='dealer' AND `product`='peripharel' group BY orderid order by orderid";
         $query = $conn->query($sql);
           while($row = $query->fetch_assoc()){
             $odd = $row['orderid'];
@@ -60,7 +61,8 @@
             echo "
             <tr>
               <td valign='center'>".$row['id']."</td>
-              <td>".$row['orderid']."</td>
+              <td style='text-align:center;'><a href='order-detail-view-peripheral-dl.php?odid=$odd'>$odd</a></td>
+              
               <td>".$row['order_date']."</td>
               <td>".$get_dealer['dealerid']. '<br>' . $get_dealer['city']."</td>
               
@@ -71,7 +73,7 @@
               <td>".$row['total_price']."</td>
 
               <td>".$row['payment_mode']."</td>
-              <td>".$row['order_status']."</td>
+              <td>".$row['order_status']."<br>".$row['status_date']."</td>
               <td>".$row['remarks']."</td>
               <td><a href='upload/$attach' class='btn btn-success btn-xs' target='_blank'>Attachment</a></td>
               <td><a href='update_order_peripheral.php?id=$odd' class='btn btn-success btn-xs'>Update</a></td>

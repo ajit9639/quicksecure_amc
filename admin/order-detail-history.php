@@ -47,16 +47,21 @@
                                         </thead>
                                         <tbody>
                                             <?php //
-        $sql = "SELECT * FROM tbl_order order by id desc";
+                                            
+        // $sql = "SELECT * FROM tbl_order where `type`='dealer' order by id desc";
+        // echo "SELECT sum(qty) as qty1,sum(`gst_amount`) as gst1,sum(`total_price`) as total1,`order_date`,`remarks`,`order_status`,`payment_mode`,`orderid`,`attachment`,`status_date`,`id` FROM tbl_order where `type`='dealer' AND `product`='peripharel' group BY orderid order by orderid";
+        $sql = "SELECT sum(qty) as qty1,sum(`gst_amount`) as gst1,sum(`total_price`) as total1,`orderid`,`order_date`,`dealer_id`,`dealer_name`,`product`,`qty`,`gst_percentage`,`gst_amount`,`total_price`,`payment_mode`,`remarks`,`attachment`,`order_status`,`id`,`status_date` FROM tbl_order where `type`='dealer' AND `product`='Laptop' || `product`='desktop' group BY orderid order by orderid";
         $query = $conn->query($sql);
           while($crow = $query->fetch_assoc()){
                                   $idd = $crow['orderid'];
                                   $attach = $crow['attachment'];
-
+                                  $del_id = $crow['dealer_id'];
+                                  
+    
                                   
       echo "<tr><td style='text-align:center;'>
       <input type='hidden' style='width:20px;border-width:0px;border:none;background: transparent;' id='txtN' name='txtN' value='$crow[id]' readonly>$crow[id]</td>
-      <td style='text-align:center;'><a href='order-detail-view.php?odid=$crow[orderid]'>$crow[orderid]</a></td>
+      <td style='text-align:center;'><a href='order-detail-view-ld.php?odid=$crow[orderid]'>$crow[orderid]</a></td>
       <td style='text-align:center;'>$crow[order_date]</td>
       <td style='text-align:center;'>$crow[dealer_name] / QSDL$crow[dealer_id]</td>
       
@@ -68,7 +73,7 @@
 
       <td style='text-align:center;'>$crow[payment_mode]</td>
 
-      <td style='text-align:center;'>$crow[order_status]</td>
+      <td style='text-align:center;'>$crow[order_status] <br> $crow[status_date]</td>
 
 
 
@@ -86,7 +91,7 @@
                                             }
                                             ?>
 
-                                            
+
 
                                             <!--button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button-->
                                         </tbody>

@@ -94,7 +94,7 @@
                                                         <?php echo $row['remarks'] ?></td>
                                                     <td valign='center' colspan='3'>Attachment :
                                                         <a href="upload/<?php echo $row['attachment'] ?>"
-                                                            download="dowmload"
+                                                            download="download"
                                                             class="btn btn-danger btn-xs">Download</a>
                                                     </td>
 
@@ -128,7 +128,7 @@ while($row2 = mysqli_fetch_assoc($sql1)){
                                                     <td colspan="3"><?php echo $row2['processor1'] ?> </td>
                                                     <!-- <td colspan="4"><?php echo $row2['ram1'] ?> </td> -->
 
-                                                    <td><?php echo $row2['unit_price'] ?> </td>
+                                                    <td><?php echo $row2['exclusive_price'] ?> </td>
                                                     <td><?php echo $row2['qty'] ?> </td>
                                                     <td><?php echo $row2['gst_percentage'] ?>% </td>
                                                     <td><?php echo $row2['gst_amount'] ?> </td>
@@ -139,7 +139,7 @@ $s++;
 } 
 
 
-$sql12 = mysqli_query($conn , "SELECT * from `tbl_order_peripheral` where `orderid`='$idd'");
+$sql12 = mysqli_query($conn , "SELECT sum(exclusive_price) as ex,sum(gst_amount) as gst,sum(total_price) as Total from `tbl_order_peripheral` where `orderid`='$idd'");
 $row22 = mysqli_fetch_array($sql12);
 ?>
 
@@ -150,25 +150,25 @@ $row22 = mysqli_fetch_array($sql12);
                                                 <tr>
                                                     <td colspan="9"></td>
 
-                                                    <td colspan='2'><strong>Inclusive Price </strong></td>
-                                                    <td colspan='2'><?php echo $row22['inclusive_price'] ?></td>
+                                                    <td colspan='2'><strong>Sub Total </strong></td>
+                                                    <td colspan='2'><?php echo number_format((float)$row22['ex'], 2, '.', '') ?></td>
                                                 </tr>
 
                                                 <!-- <tr>
                                                     <td colspan="8"></td>
                                                     <td colspan='2'><strong>GST% </strong></td>
-                                                    <td colspan='2'><?php echo $row22['gst_percentage'] ?>%</td>
+                                                    <td colspan='2'><?php // echo $row22['gst_percentage'] ?>%</td>
                                                 </tr> -->
 
                                                 <tr>
                                                     <td colspan="9"></td>
                                                     <td colspan='2'><strong>GST Amt. </strong></td>
-                                                    <td colspan='2'><?php echo $row22['gst_amount'] ?></td>
+                                                    <td colspan='2'><?php echo number_format((float)$row22['gst'], 2, '.', '') ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="9"></td>
                                                     <td colspan='2'><strong>Total Price </strong></td>
-                                                    <td colspan='2'><?php echo $row22['total_price'] ?></td>
+                                                    <td colspan='2'><?php echo number_format((float)$row22['Total'], 2, '.', '') ?></td>
                                                 </tr>
 
 
@@ -230,7 +230,7 @@ if(isset($_POST['print_submit'])){
   $txtPaymentMode = $_POST['txtPaymentMode'];
   $txtRemarks = $_POST['txtRemarks'];
 
-  $filename = $_FILES["attach_file"]["name"];
+  $filename = $row['orderid'].$_FILES["attach_file"]["name"];
   $tempname = $_FILES["attach_file"]["tmp_name"];
   $folder = "upload/".$filename;
   move_uploaded_file($tempname, $folder);

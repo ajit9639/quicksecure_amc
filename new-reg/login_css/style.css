@@ -180,6 +180,7 @@ li.dropdown-header {
     margin: 100px auto;
 }
 .header {
+	width: 100%;
     padding: 0px 0;
     background-color: #FDFDFD;
 }
@@ -435,10 +436,10 @@ i.real-estate {
 	width:35%;
 }
 .sign-in-wrapper{
-	background:#f9f9f9;
+	/* background:#f9f9f9; */
 }
 .new_people{
-	padding:3em 0 0;
+	padding: 20px 0px;
 	text-align:center;
 }
 .new_people h2{
@@ -465,15 +466,19 @@ i.real-estate {
 	background:#f3c500;
 }
 .sign-in-form-top{
+	
 	display: block;
-    padding: 0 0 15px;
+    background: #e3e8c8;
+    text-align: center;
+    padding-top: 5px;
 }
+
 .sign-in-form-top h1{
-	color:#000;
-	margin: 50px 0px 0px 0px;
-	font-size:2em;
-	font-weight:300;
-	text-decoration:none;
+	color: #5a5a5a;
+    font-weight: 900;
+    margin: 50px 0px 0px 0px;
+    font-size: 2em;
+    text-decoration: none;
 }
 .sign-in-form-top p a{
 	color:#fff;
@@ -487,7 +492,7 @@ i.real-estate {
 .signin {
     padding: 2em;
 	position:relative;
-	background: #fff;
+	background: #e3e8c8;
 }
 .signin-rit {
   padding: 0.3em 0em 0em 0em;
@@ -521,9 +526,10 @@ i.real-estate {
 
 .log-input .log-input-left select{
 	width: 98%;
-    margin: 20px 0px;
+    margin: 5px 0px;
     border: 1px solid #d3d3d3;
-    padding: 10px;
+    padding: 5px;
+	
 }
 
 span.checkbox1 {
@@ -644,7 +650,7 @@ span.checkbox2 {
     background: #01a185;
     border: none;
     padding: 10px 0;
-    width: 45%;
+    width: 35%;
     display: block;
     outline: none;
     border-radius: 0;
@@ -653,7 +659,7 @@ span.checkbox2 {
     -ms-border-radius: 0px;
     -o-border-radius: 0px;
     cursor: pointer;
-    margin: 0.5em 0 0 27.5%;
+    margin: 10px;
 }
 .sign-in-form input[type="submit"]:hover {
 	 background:#f3c500;
@@ -676,13 +682,16 @@ span.checkbox2 {
 /*-- sign-up --*/
 .sign-up{
 	width: 40%;
-    margin: 0 auto;
+    margin: 25px auto 0px;
+    background: #dadbba;
+    padding: 10px 20px;
 }
 .sign-up h1 {
-    text-align: center;
+	text-align: center;
     font-size: 2em;
-    color:#f3c500;
+    color: #f1f1f1;
     margin: 0 0 0.5em;
+    background: #01a185;
 }
 p.creating{
 	color:#999;
@@ -1061,7 +1070,7 @@ ul.location li:nth-child(2) {
     margin: 0;
 }
 .copyrights p,.diff p {
-    color: #979797;
+    color: #000000;
     font-size: 14px;
 	margin-top:0;
 }
@@ -3202,6 +3211,10 @@ p.post-terms a {
 /*-- //Post ad --*/
 footer.diff {
     margin-bottom: 40px;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    background: #fff;
 }
 /*--typography--*/
 .typography {

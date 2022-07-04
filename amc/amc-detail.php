@@ -32,20 +32,18 @@
           <th>ID</th>
           <th>AMC ID</th>
           <th>Date</th>
-          <th>Item Type</th>
-          <th>Purchase Year</th>
-          <th>Item Category</th>
-          <th>Brand Name</th>
-          <th>Description</th>
+          <th>Dealer ID / City</th>
           <th>Package Name</th>
-          <th>Year for AMC</th>
           <th>QTY</th>
-          <th>Price</th>
-          <th>GST %</th>
-          <th>Total Amt</th>
+          <th>GST%</th>
+          <th>GST Amount</th>
+          <th>Total Amount</th>
+          <th>Payment Mode</th>
+
           <th>Order Status</th>
           
-          <th>Payment Option</th>
+          
+          
           <th>payment Remarks</th>
           <th>Attachment</th>
            
@@ -63,23 +61,22 @@
               <td valign='center'>".$row['id']."</td>
               <td valign='center'><a href='amc-sale-detail.php?amcsid=".$row['id']."'>QSAMC".$row['id']."</a></td>
               <td>".$row['sale_dt']."</td>
-              <td>".$row['item_type']."</td>
-              <td>".$row['purchase_year']."</td>
-              <td>".$row['item_category']."</td>
-              <td>".$row['brand_name']."</td>
-              <td>".$row['item_description']."</td>
-
+              <td></td>
               <td>".$row['package_name']."</td>
-              <td>".$row['no_year']."</td>
               <td>".$row['qty']."</td>
-              <td>".$row['basic_price']."</td>
+
               <td>".$row['gst']."</td>
+              <td>".$row['gstamt']."</td>
               <td>".$row['tot_amt']."</td>
-              <td>Pending</td>
-              
+
               <td>".$row['payment_option']."</td>
+
+              <td>".$row['order_status']."</td>
+
+              
+              
               <td>".$row['payment_remarks']."</td>
-              <td><a href='upload/".$row['payment_attachment']."' target='_blank' class='btn btn-success'>Attachment</a></td>
+              <td><a href='upload/".$row['payment_attachment']."' target='_blank' class='btn btn-xs btn-success'>Attachment</a></td>
 
     
             </tr>";

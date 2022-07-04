@@ -34,6 +34,7 @@
           <th>Order ID</th>
           <th>Order Date</th>
           <th>Dealer City</th>
+          <th>Package Name</th>
           <th>QTY</th>
           <th>GST%</th>
           <th>GST Amount</th>
@@ -48,7 +49,7 @@
         <tbody>
 
       <?php 
-        $sql = "SELECT * FROM tbl_amc_sale order by id desc";
+        $sql = "SELECT * FROM `tbl_amc_sale` order by id desc";
         $query = $conn->query($sql);
           while($row = $query->fetch_assoc()){
             $attach = $row['payment_attachment'] ; 
@@ -56,10 +57,11 @@
             echo "
             <tr>
               <td valign='center'>".$row['id']."</td>
-              <td valign='center'><a href='amc-sale-detail.php?amcsid=".$row['id']."'>QSAMC".$row['id']."</a></td>
+              <td valign='center'><a href='amc-sale-detail.php?amcsid=".$row['id']."'>QSEM0".$row['id']."</a></td>
               <td valign='center'>".$row['sale_dt']."</td>
 
               <td>".$row['city1']."</td>
+              <td>".$row['package_name']."</td>
               <td>".$row['qty']."</td>
 
               <td>".$row['gst']."</td>

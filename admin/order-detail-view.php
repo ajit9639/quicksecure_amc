@@ -140,7 +140,8 @@ $s++;
 } 
 
 
-$sql12 = mysqli_query($conn , "SELECT * from `tbl_order` where `orderid`='$idd'");
+// $sql12 = mysqli_query($conn , "SELECT * from `tbl_order` where `orderid`='$idd'");
+$sql12 = mysqli_query($conn , "SELECT  sum(exclusive_price) as ex,sum(gst_amount) as gst,sum(total_price) as Total from `tbl_order` where `orderid`='$idd'");
 $row22 = mysqli_fetch_array($sql12);
 ?>
 
@@ -152,24 +153,24 @@ $row22 = mysqli_fetch_array($sql12);
                                                     <td colspan="9"></td>
 
                                                     <td colspan='2'><strong>Sub Total </strong></td>
-                                                    <td colspan='2'><?php echo $row22['inclusive_price'] ?></td>
+                                                    <td colspan='2'><?php echo number_format((float)$row22['ex'], 2, '.', '') ?></td>
                                                 </tr>
 
                                                 <!-- <tr>
                                                     <td colspan="8"></td>
                                                     <td colspan='2'><strong>GST% </strong></td>
-                                                    <td colspan='2'><?php echo $row22['gst_percentage'] ?>%</td>
+                                                    <td colspan='2'><?php // echo $row22['gst_percentage'] ?>%</td>
                                                 </tr> -->
 
                                                 <tr>
                                                     <td colspan="9"></td>
                                                     <td colspan='2'><strong>GST Amt. </strong></td>
-                                                    <td colspan='2'><?php echo $row22['gst_amount'] ?></td>
+                                                    <td colspan='2'><?php echo number_format((float)$row22['gst'], 2, '.', '') ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="9"></td>
                                                     <td colspan='2'><strong>Total Price </strong></td>
-                                                    <td colspan='2'><?php echo $row22['total_price'] ?></td>
+                                                    <td colspan='2'><?php echo number_format((float)$row22['Total'], 2, '.', '') ?></td>
                                                 </tr>
 
 

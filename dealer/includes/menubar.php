@@ -2,6 +2,7 @@
 // session_start();
 $dealer_id_name = $user['dealerid'];
 // $dealer_id_name1 = $_SESSION["$dealer_id_name"];
+$_SESSION["del_id"] = $user['id'];
 $_SESSION["deal_id"] = $user['dealerid'];
 $_SESSION["deal_name"] = $user['store_name'];
 $_SESSION["city"] = $user['city'];
@@ -17,13 +18,16 @@ $_SESSION["city"] = $user['city'];
         <img src="<?php echo (!empty($user['photo'])) ? 'images/k2.jpg' : 'images/k2.jpg'; ?>" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p><?php echo $user['dealerid']; ?></p>
+        <p>Dealer Name :  <?php echo $user['dealer_name'];?><br>Dealer ID : <?php echo $user['dealerid']; ?></p>
        <!-- <a><i class="fa fa-circle text-success"></i> <?php // echo $user['dealerid']; ?></a> -->
       </div>
     </div>
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
-      <li class="header">Dealer Name :  <?php echo $user['store_name'];?></li>
+      <li class="header">
+        <span style="color:#fff">
+                          Store Name :  <?php echo $user['store_name'];?></span>
+    </li>
       <li class=""><a href="./"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
       <!--li class="header">MANAGE</li-->
 
@@ -34,9 +38,9 @@ $_SESSION["city"] = $user['city'];
 <li class=""><a href="order-detail.php"><i class="fa fa-user"></i> <span>All Order</span></a></li>
 
 <!-- individual order -->
-<li class=""><a href="order-detail-delivered.php"><i class="fa fa-user"></i> <span>Delivered Orders</span></a></li>
+<!-- <li class=""><a href="order-detail-delivered.php"><i class="fa fa-user"></i> <span>Delivered Orders</span></a></li>
 <li class=""><a href="order-detail-return.php"><i class="fa fa-user"></i> <span>Return Orders</span></a></li>
-<li class=""><a href="order-detail-cancel.php"><i class="fa fa-user"></i> <span>Cancel Orders</span></a></li>
+<li class=""><a href="order-detail-cancel.php"><i class="fa fa-user"></i> <span>Cancel Orders</span></a></li> -->
 
 
 

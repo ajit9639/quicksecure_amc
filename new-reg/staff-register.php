@@ -15,9 +15,17 @@
 <link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <!--//fonts-->	
- 
+ <style>
+	.form-control{
+		background-color: #dadbba!important;
+	}
+ </style>
  </head>
-<body>
+<body style="background: url(./upload/bg.jpg);
+    background-size: cover;
+    background-position: bottom;
+    height: 100%;
+    background-repeat: no-repeat;">
 <div class="header" style="position: fixed;">
 
 		<div class="container">
@@ -40,9 +48,9 @@
 			<div id="page-wrapper" class="sign-in-wrapper">
 				<div class="graphs">
 					<div class="sign-up">
-						<h1>Create an account</h1>
+						<h1>Staff Registration</h1>
 					 
-						<h2>Personal Information</h2>
+						<!-- <h2>Personal Information</h2> -->
 				<form method="post" action="insert-staff-data.php" enctype="multipart/form-data">	
 
 						<div class="sign-u">
@@ -236,9 +244,9 @@ var check1 = function() {
 									<input type="submit" name="submit" id="submit" value="Save">
 									 
 							</div>
-							<div class="sub_home_right">
+							<!-- <div class="sub_home_right">
 								<p>Go Back to <a href="index.php">Home</a></p>
-							</div>
+							</div> -->
 							<div class="clearfix"> </div>
 						</div>
 </form>
@@ -247,9 +255,9 @@ var check1 = function() {
 				</div>
 			</div>
 		<!--footer section start-->
-			<footer class="diff">
+			<!-- <footer class="diff">
 			   <p class="text-center">© 2021-2022 Quick Secure India</p>
-			</footer>
+			</footer> -->
         <!--footer section end-->
 	</section>
 </body>

@@ -63,7 +63,11 @@
 </script>		
 
 </head>
-<body>
+<body style="background: url(./upload/bg.jpg);
+    background-size: cover;
+    background-position: bottom;
+    height: 100%;
+    background-repeat: no-repeat;">
 <div class="header" style="position: fixed;">
 		<div class="container">
 			<div class="logo">
@@ -81,9 +85,9 @@
 			<div id="page-wrapper" class="sign-in-wrapper">
 				<div class="graphs">
 					<div class="sign-up">
-						<h1>Create an account</h1>
+						<h1>Dealer Registration</h1>
 					 
-						<h2>Personal Information</h2>
+						<!-- <h2>Personal Information</h2> -->
 				<form method="post" action="insert-dealer-data.php">	
 						<div class="sign-u">
 							<div class="sign-up1">
@@ -229,9 +233,9 @@ var check1 = function() {
 									<input type="submit" name="submit" id="submit" value="Save">
 									 
 							</div>
-							<div class="sub_home_right">
+							<!-- <div class="sub_home_right">
 								<p>Go Back to <a href="index.php">Home</a></p>
-							</div>
+							</div> -->
 							<div class="clearfix"> </div>
 						</div>
 </form>
@@ -240,9 +244,9 @@ var check1 = function() {
 				</div>
 			</div>
 		<!--footer section start-->
-			<footer class="diff">
+			<!-- <footer class="diff">
 			   <p class="text-center">© 2021-2022 Quick Secure India</p>
-			</footer>
+			</footer> -->
         <!--footer section end-->
 	</section>
 </body>

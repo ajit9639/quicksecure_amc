@@ -67,162 +67,193 @@ else
 
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Login :: Quick Secure India</title>
-<link rel="stylesheet" href="login_css/bootstrap.min.css">
-<link rel="stylesheet" href="login_css/bootstrap-select.css">
-<link href="login_css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- for-mobile-apps -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Login :: Quick Secure India</title>
+    <link rel="stylesheet" href="login_css/bootstrap.min.css">
+    <link rel="stylesheet" href="login_css/bootstrap-select.css">
+    <link href="login_css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- //for-mobile-apps -->
-<!--fonts-->
-<link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<!--//fonts-->	
- 
- 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="application/x-javascript">
+    addEventListener("load", function() {
+        setTimeout(hideURLbar, 0);
+    }, false);
 
- 
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+    </script>
+    <!-- //for-mobile-apps -->
+    <!--fonts-->
+    <link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+    <link
+        href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+        rel='stylesheet' type='text/css'>
+    <!--//fonts-->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 </head>
-<body>
-<div class="header" style="position: fixed;">
-		<div class="container">
-			<div class="logo">
-				<!--<a href="index.php"><span>Quick</span> Secure India</a>-->
-				<a href="index.php"><img src="logo.png" style="width:300px; height: auto;"></a>
-			</div>
-			
-			<!--<div class="header-right">
+
+<body style="background: url(./upload/bg.jpg);
+    background-size: cover;
+    background-position: bottom;
+    height: 100vh;
+    background-repeat: no-repeat;">
+    <div class="header" style="position: fixed;">
+        <div class="container">
+            <div class="logo">
+                <!--<a href="index.php"><span>Quick</span> Secure India</a>-->
+                <a href="index.php"><img src="logo.png" style="width:300px; height: auto;"></a>
+            </div>
+
+            <!--<div class="header-right">
 				<a class="account" href="staff-register.php">Staff Registration</a>&nbsp;&nbsp;
 	   		<a class="account" href="dealer-register.php">Dealer Registration</a>
 			</div>-->
 
-		</div>
-	</div>
-	 
-	 <section><form class="register-form outer-top-xs" method="post">
-			<div id="page-wrapper" class="sign-in-wrapper">
-				<div class="graphs">
-					<div class="sign-in-form">
-						<div class="sign-in-form-top">
-							<h1>Log in as staff..</h1>
-						</div>
-						<div class="signin">
-							<div class="signin-rit">
-								<span class="checkbox1">
-									 <label class="checkbox"><input type="checkbox" name="checkbox" checked="">Forgot Password ?</label>
-								</span>
-								<p>
-	
-	<a href="forgot-password.php">Click Here</a> </p>
+        </div>
+    </div>
 
-								<div class="clearfix"> </div>
-							</div>
-				 
-							<div class="log-input">
-								<div class="log-input-left">
-								   <select class="user" name="txtCity" id="txtCity">
-									   <option value="0">--select City--</option>
-									   <?php
+    <section>
+        <form class="register-form outer-top-xs" method="post">
+            <div id="page-wrapper" class="sign-in-wrapper">
+                <div class="graphs">
+                    <div class="sign-in-form">
+                        <div class="sign-in-form-top">
+                        <h1 style="text-align:center">Log in as staff</h1>
+                        </div>
+                        <div class="signin">
+						<div class="">
+                           
+                        </div>
+                            <!-- <div class="signin-rit">
+                                <span class="checkbox1">
+                                    <label class="checkbox"><input type="checkbox" name="checkbox" checked="">Forgot
+                                        Password ?</label>
+                                </span>
+                                <p>
+
+                                    <a href="forgot-password.php">Click Here</a>
+                                </p>
+
+                                <div class="clearfix"> </div>
+                            </div> -->
+
+                            <div class="log-input">
+                                <div class="log-input-left">
+                                    <select class="user" name="txtCity" id="txtCity">
+                                        <option value="0">--select City--</option>
+                                        <?php
 									 		$sql = "SELECT * FROM tbl_dealer order by id asc";
 											 $query = $conn->query($sql);
 											   while($row = $query->fetch_assoc()){
 
 									   ?>
-									   <option value="<?php echo $row['city'];?>"><?php echo $row['city'];?></option>
-									   <?php }?>
-								   </select>
-								</div>
-			 
-							 
-							</div>
-<script type="text/javascript">
-	$(document).ready(function() {
-	$('#txtCity').on('change', function() {
-	var category_id = this.value;
-	$.ajax({
-	url: "fetch-pin.php",
-	type: "POST",
-	data: {
-	category_id: category_id
-	},
-	cache: false,
-	success: function(result){
-	$("#txtPinCode").html(result);
-	}
-	});
-	});
-	});
+                                        <option value="<?php echo $row['city'];?>"><?php echo $row['city'];?></option>
+                                        <?php }?>
+                                    </select>
+                                </div>
 
-//0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0\\
-	$(document).ready(function() {
-	$('#txtPinCode').on('change', function() {
-	var category_id = this.value;
-	$.ajax({
-	url: "fetch-dealer.php",
-	type: "POST",
-	data: {
-	category_id: category_id
-	},
-	cache: false,
-	success: function(result){
-	$("#txtDealerName").html(result);
-	}
-	});
-	});
-	});	
-</script>
-							<div class="log-input">
-								<div class="log-input-left">
-								   <select class="user" name="txtPinCode" id="txtPinCode"></select>
-								</div>
-			 
-								 
+
+                            </div>
+                            <script type="text/javascript">
+                            $(document).ready(function() {
+                                $('#txtCity').on('change', function() {
+                                    var category_id = this.value;
+                                    $.ajax({
+                                        url: "fetch-pin.php",
+                                        type: "POST",
+                                        data: {
+                                            category_id: category_id
+                                        },
+                                        cache: false,
+                                        success: function(result) {
+                                            $("#txtPinCode").html(result);
+                                        }
+                                    });
+                                });
+                            });
+
+                            //0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0\\
+                            $(document).ready(function() {
+                                $('#txtPinCode').on('change', function() {
+                                    var category_id = this.value;
+                                    $.ajax({
+                                        url: "fetch-dealer.php",
+                                        type: "POST",
+                                        data: {
+                                            category_id: category_id
+                                        },
+                                        cache: false,
+                                        success: function(result) {
+                                            $("#txtDealerName").html(result);
+                                        }
+                                    });
+                                });
+                            });
+                            </script>
+                            <div class="log-input">
+                                <div class="log-input-left">
+                                    <select class="user" name="txtPinCode" id="txtPinCode"></select>
+                                </div>
+
+
+                            </div>
+
+                            <div class="log-input">
+                                <div class="log-input-left">
+                                    <select class="user" name="txtDealerName" id="txtDealerName"></select>
+                                </div>
+
+
+                            </div>
+
+                            <div class="log-input">
+                                <div class="log-input-left">
+                                    <input type="text" id="txtUID" name="txtUID" class="user" value=""
+                                        placeholder="Enter User ID" />
+                                </div>
+
+                                <div class="clearfix"> </div>
+                            </div>
+
+
+                            <div class="log-input">
+                                <div class="log-input-left">
+                                    <input type="password" id="txtPWD" name="txtPWD" class="lock" value="" 
+									placeholder="Enter Password"/>
+                                </div>
+
+                                <div class="clearfix"> </div>
+                            </div>
+							<div style="display:flex">
+
+								<input type="submit" name="login" value="Log in">
+								<div class="new_people">
+                            <a href="staff-register.php">Staff Register Now!</a>
+                        </div>
 							</div>
 
-							<div class="log-input">
-								<div class="log-input-left">
-								   <select class="user" name="txtDealerName" id="txtDealerName"></select>
-								</div>
-			 
-							 
-							</div>
-
-							<div class="log-input">
-								<div class="log-input-left">
-								   <input type="text" id="txtUID" name="txtUID" class="user" value="" placeholder="Enter User ID"/>
-								</div>
-			 
-								<div class="clearfix"> </div>
-							</div>
-							
-							
-							<div class="log-input">
-								<div class="log-input-left">
-								   <input type="password" id="txtPWD" name="txtPWD" class="lock" value="" />
-								</div>
-				 
-								<div class="clearfix"> </div>
-							</div>
-							<input type="submit" name="login" value="Log in">
-					 
-						</div>
-						<div class="new_people">
-							<a href="staff-register.php">Staff Register Now!</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</form>
-		<!--footer section start-->
-			<footer class="diff">
-			   <p class="text-center">© 2021-2022 Quick Secure India</p>
-			</footer>
+                        </div>
+                        <!-- <div class="new_people">
+                            <a href="staff-register.php">Staff Register Now!</a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!--footer section start-->
+        <footer class="diff">
+            <p class="text-center">© 2021-2022 Quick Secure India</p>
+        </footer>
         <!--footer section end-->
-	</section>
+    </section>
 </body>
+
 </html>

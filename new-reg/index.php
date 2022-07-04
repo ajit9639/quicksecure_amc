@@ -62,7 +62,13 @@ else
  
  
 </head>
-<body>
+<body
+style='background: url("./upload/bg.jpg");
+    background-size: cover;
+    background-position: bottom;
+    height: 100vh;
+    background-repeat: no-repeat;'
+>
 <div class="header">
 		<div class="container">
 			<div class="logo">
@@ -79,7 +85,7 @@ else
 			<div id="page-wrapper" class="sign-in-wrapper">
 				<div class="graphs">
 					<div class="sign-in-form">
-						<div class="sign-in-form-top"><h1></h1></div>
+						<div class="sign-in-form-top"><h1>Login / Registration</h1></div>
 						
 						<div class="signin" style="padding-left: 50px;">
 					 
@@ -103,7 +109,7 @@ else
 		</form>
 		<!--footer section start-->
 			<footer class="diff">
-			   <p class="text-center">© 2021-2022 Quick Secure India</p>
+			   <p class="text-center">© 2022 Quick Secure India</p>
 			</footer>
         <!--footer section end-->
 	</section>

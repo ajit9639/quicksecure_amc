@@ -58,7 +58,8 @@
 
 
 
-        $sql = "SELECT * FROM tbl_order_peripheral order by id desc";
+        // $sql = "SELECT * FROM tbl_order_peripheral where `type`='staff' order by id desc";
+        $sql = "SELECT sum(qty) as qty1,sum(`gst_amount`) as gst1,sum(`total_price`) as total1,`qty`,`gst_amount`,`total_price`,`order_date`,`remarks`,`order_status`,`payment_mode`,`orderid`,`attachment`,`status_date`,`id` FROM `tbl_order_peripheral` where `type`='staff' AND `product`='peripharel' group BY orderid order by orderid";
         $query = $conn->query($sql);
           while($crow = $query->fetch_assoc()){
             $id = $crow['orderid'];
@@ -75,7 +76,7 @@
       <td style='text-align:center;'>$crow[total_price]</td>
 
       <td style='text-align:center;'>$crow[payment_mode]</td>
-      <td style='text-align:center;'>$crow[order_status]</td>
+      <td style='text-align:center;'>$crow[order_status] <br> $crow[status_date]</td>
       <td style='text-align:center;'>$crow[remarks]</td>
       <td style='text-align:center;'>
       <a href='../amc/upload/$crow[attachment]' class='btn btn-xs btn-success'>Download</a>

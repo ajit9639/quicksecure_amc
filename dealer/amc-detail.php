@@ -34,6 +34,7 @@
           <th>Date</th>
 
           <th>Dealer ID / City</th>
+          <th>Package Name</th>
           <th>GST %</th>
           <th>GST Amount</th>
           <th>Total Amount</th>
@@ -41,7 +42,7 @@
           <th>Order Status</th>
           <th>Remarks</th>
           <th>Attachment</th>
-          <th>Update Status</th>
+          
 
 
 
@@ -66,28 +67,28 @@
         <tbody>
       <?php //
       $dlid = $_SESSION['dlrid'];
-        $sql = "SELECT * FROM tbl_amc_sale_dealer where dealer_name='$dlid' order by id desc";
+        $sql = "SELECT * FROM `tbl_amc_sale_dealer` where dealer_name='$dlid' order by id desc";
         $query = $conn->query($sql);
           while($row = $query->fetch_assoc()){
                                   
             echo "
             <tr>
               <td valign='center'>".$row['id']."</td>
-              <td valign='center'><a href='amc-sale-detail.php?amcsid=".$row['id']."'>QSAMC".$row['id']."</a></td>
+              <td valign='center'><a href='amc-sale-detail.php?amcsid=".$row['id']."'>QSDL001".$row['id']."</a></td>
               <td>".$row['sale_dt']."</td>
               <td>QSDL0".$row['dealer_name'].' / '.$row['city1']."</td>
               
+              <td>".$row['package_name']."</td>
               <td>".$row['gst']."</td>
               <td>".$row['gstamt']."</td>
               <td>".$row['tot_amt']."</td>
               <td>".$row['payment_remarks']."</td>
-              <td>".$row['order_status']."</td>
+              <td>".$row['order_status']."<br>".$row['status_date']."</td>
 
               
 
               <td>".$row['payment_remarks']."</td>
-              <td><a href='upload/".$row['payment_attachment']."' target='_blank' class='btn btn-xs btn-success'>Attacment</a></td>
-              <td><a href='' target='_blank' class='btn btn-xs btn-success'>Update Status</a></td>
+              <td><a href='upload/".$row['payment_attachment']."' target='_blank' class='btn btn-xs btn-success'>Attacment</a></td>              
               
 
             </tr>";

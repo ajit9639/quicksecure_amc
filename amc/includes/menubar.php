@@ -3,6 +3,10 @@
 $_SESSION['staffid'] = $user['staffid'];
 $_SESSION['staffname'] = $user['staff_name'];
 $_SESSION['emp_img'] = $user['emp_img'];
+$_SESSION['staff_id'] = $user['id'];
+$sid = $_SESSION['staff_id'];
+$del_id = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM `tbl_dealer` where `dealer_name`='MR. A T.'"));
+
 // $delid = $_SESSION['dealerid'];
 ?>
 
@@ -16,7 +20,7 @@ $_SESSION['emp_img'] = $user['emp_img'];
 ">
         <!-- <img src=upload/<?php echo $user["emp_img"] ?> > -->
         <!-- <img src="<?php (empty($user['emp_img'])) ? 'upload/<?php echo $user["emp_img"]' : 'images/k2.jpg'; ?>" class="img-circle" alt="User Image"> -->
-        <img src=upload/<?php echo $user["emp_img"] ?> >
+        <img src=upload/profile.jpg >
         <div>
           <p style="
     text-align: center;
@@ -40,7 +44,7 @@ $_SESSION['emp_img'] = $user['emp_img'];
 
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
-      <li class="header" style="text-align:center;color:#ffffff;"> Dealer : <?php echo $_SESSION['dlrnm']; ?> / <?php echo $_SESSION["deal_id"]; ?></li>
+      <li class="header" style="text-align:center;color:#ffffff;"> Dealer : <?php echo $_SESSION['dlrnm']; ?> / <?php echo $del_id['dealerid']; ?></li>
       
 
       <li class=""><a href="./"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>

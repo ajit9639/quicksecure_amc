@@ -39,7 +39,7 @@
                                             <th>GST Amount</th>
                                             <th>Total Amount</th>
                                             <th>Payment Mode</th>
-                                            <th>Order Status</th>
+                                            <th>Order Status / Date</th>
                                             <th>Remarks</th>
                                             <th>Attachment</th>
                                             <th>Edit Status</th>
@@ -47,7 +47,8 @@
                                         </thead>
                                         <tbody>
                                             <?php //
-        $sql = "SELECT * FROM tbl_order order by id desc";
+        // $sql = "SELECT * FROM `tbl_order` where `type`='staff' order by id desc";
+        $sql = "SELECT sum(qty) as qty1,sum(`gst_amount`) as gst1,sum(`total_price`) as total1,`dealer_name`,`dealer_id`,`qty`,`gst_percentage`,`gst_amount`,`total_price`,`dealer_name`,`order_date`,`remarks`,`order_status`,`payment_mode`,`orderid`,`attachment`,`status_date`,`id` FROM `tbl_order`where `type`='staff' AND `product`='laptop' || `product`='desktop' group BY orderid order by orderid";
         $query = $conn->query($sql);
           while($crow = $query->fetch_assoc()){
                                   $idd = $crow['orderid'];
@@ -68,7 +69,7 @@
 
       <td style='text-align:center;'>$crow[payment_mode]</td>
 
-      <td style='text-align:center;'>$crow[order_status]</td>
+      <td style='text-align:center;'>$crow[order_status]  $crow[status_date]</td>
 
 
 

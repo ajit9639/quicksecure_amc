@@ -8,7 +8,8 @@ $get_all = mysqli_fetch_assoc(mysqli_query($conn , "select * from `tbl_order_per
  if(isset($_POST['update_me'])){
     $status1 = $_POST['status1'];
     $remarks1 = $_POST['remarks1'];
-    $update = mysqli_query($conn , "UPDATE `tbl_order_peripheral` SET `remarks`='$remarks1',`order_status`='$status1'  WHERE `orderid`='$id'");
+    $date = $_POST['date'];
+    $update = mysqli_query($conn , "UPDATE `tbl_order_peripheral` SET `remarks`='$remarks1',`order_status`='$status1',`status_date`='$date'  WHERE `orderid`='$id'");
  
     if($update){
         echo "<script>window.location.replace('periferals-detail-from-dealer.php')</script>";
@@ -56,6 +57,11 @@ $get_all = mysqli_fetch_assoc(mysqli_query($conn , "select * from `tbl_order_per
         <div class='form-group'>
             <label for='email'>Enter Remarks:</label>
             <textarea type='text' class='form-control' placeholder='Enter Remarks' name='remarks1' important><?php echo $get_all['remarks']?></textarea>
+        </div>
+
+        <div class='form-group'>
+            <label for='email'>Select Date:</label>
+            <input type='date' class='form-control' name='date' important value='<?php echo $get_all['status_date']?>'>
         </div>
 
         <button type='submit' name='update_me' class='btn btn-success'>Update</button>

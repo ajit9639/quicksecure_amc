@@ -56,8 +56,9 @@
       <?php //
 
 
-
-        $sql = "SELECT * FROM tbl_order_peripheral order by id desc";
+        $staffidd = $_SESSION['staff_id'];
+        // $sql = "SELECT * FROM tbl_order_peripheral where `dealer_id`='$staffidd'";
+        $sql = "SELECT sum(qty) as qty1,sum(`gst_amount`) as gst1,sum(`total_price`) as total1,`order_date`,`remarks`,`order_status`,`payment_mode`,`orderid`,`attachment`,`status_date`,`id` FROM `tbl_order_peripheral` where `dealer_id`='$staffidd' AND `product`='peripharel' group BY orderid order by orderid";
         $query = $conn->query($sql);
           while($crow = $query->fetch_assoc()){
             // $get_attachment = mysqli_fetch_assoc(mysqli_query($conn , "SELECT * FROM `tbl_dealer_attachment`"));
@@ -72,12 +73,12 @@
 
 
       <td style='text-align:center;'>$crow[order_date]</td>
-      <td style='text-align:center;'>$crow[qty]</td>
-      <td style='text-align:center;'>$crow[gst_amount]</td>
-      <td style='text-align:center;'>$crow[total_price]</td>
+      <td style='text-align:center;'>$crow[qty1]</td>
+      <td style='text-align:center;'>$crow[gst1]</td>
+      <td style='text-align:center;'>$crow[total1]</td>
 
       <td style='text-align:center;'>$crow[payment_mode]</td>
-      <td style='text-align:center;'>$crow[order_status]</td>
+      <td style='text-align:center;'>$crow[order_status] <br> $crow[status_date]</td>
       <td style='text-align:center;'>$crow[remarks]</td>
       <td style='text-align:center;'>
       <a href='upload/$crow[attachment]' class='btn btn-xs btn-danger'>Download</a>

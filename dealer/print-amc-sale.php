@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+// error_reporting(0);
  include 'includes/session.php'; ?>
 <?php include 'includes/header.php'; ?>
 
@@ -228,7 +228,8 @@ if ($pmode==""){
 
                 if (move_uploaded_file($file, $destination)) {
 
-		$sql = "update tbl_amc_sale_dealer set payment_option='$pmode', payment_remarks='$tRemarks', payment_attachment='$filename' where id='$idd'";
+		echo "update tbl_amc_sale_dealer set payment_option='$pmode', payment_remarks='$tRemarks', payment_attachment='$filename' where id='$idd'";exit();
+    $sql = "update tbl_amc_sale_dealer set payment_option='$pmode', payment_remarks='$tRemarks', payment_attachment='$filename' where id='$idd'";
 
 		if($conn->query($sql)){
 		     

@@ -56,15 +56,16 @@
       <?php //
 
 
-
-        $sql = "SELECT * FROM tbl_order where `order_active`='active'";
+      $staff_idd = $_SESSION['staff_id'];
+      $sql = "SELECT sum(qty) as qty1,sum(`gst_amount`) as gst1,sum(`total_price`) as total1,`order_date`,`remarks`,`order_status`,`payment_mode`,`orderid`,`attachment`,`status_date`,`id` FROM `tbl_order` where `dealer_id`='$staff_idd' AND `product`='Laptop' || `product`='Desktop' group BY orderid order by orderid";
+      // $sql = "SELECT `orderid`,`order_date`,`qty`,`unit_price`,`gst_amount`,`total_price`,`payment_mode`,`remarks`,`attachment`,`order_status`,`status_date` FROM `tbl_order` where `dealer_id`=$staff_idd group BY `orderid`";
         $query = $conn->query($sql);
         $s = 1;
           while($crow = $query->fetch_assoc()){
             // $get_attachment = mysqli_fetch_assoc(mysqli_query($conn , "SELECT * FROM `tbl_dealer_attachment`"));
                                   
       echo "<tr><td style='text-align:center;'>
-      <input type='hidden' style='width:20px;border-width:0px;border:none;background: transparent;' id='txtN' name='txtN' value='$crow[id]' readonly>$s</td>
+      <input type='hidden' style='width:20px;border-width:0px;border:none;background: transparent;' id='txtN' name='txtN' value='$s' readonly>$s</td>
       
 
       <td style='text-align:center;'><a href='order-detail-view.php?odid=".$crow['orderid']."'>".$crow['orderid']."</a></td>
@@ -78,7 +79,7 @@
       <td style='text-align:center;'>$crow[total_price]</td>
 
       <td style='text-align:center;'>$crow[payment_mode]</td>
-      <td style='text-align:center;'>$crow[order_status]</td>
+      <td style='text-align:center;'>$crow[order_status]<br> $crow[status_date]</td>
       <td style='text-align:center;'>$crow[remarks]</td>
       <td style='text-align:center;'>
       <a href='upload/$crow[attachment]' class='btn btn-xs btn-danger'>Download</a>

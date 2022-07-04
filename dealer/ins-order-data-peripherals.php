@@ -59,8 +59,8 @@ $ordrid = $dealer_id_name1.'-PH-'. ($tempid + 1);;
 // $tamt = $qty2 * $price2;
 $dlrname = $_SESSION['user'];
 
-     $sql = "INSERT INTO `tbl_order_peripheral`(`orderid`, `order_date`, `dealer_id`, `product`, `modalno`, `processor1`, `ram1`, `qty`, `unit_price`, `inclusive_price`, `exclusive_price`, `gst_percentage`, `gst_amount`, `total_price`, `payment_mode`, `remarks`, `attachment`, `order_status`) VALUES 
-	 ('$ordrid','$dt','$dealerid2','$pro','$modalno2','$processor2','$ram2','$qty2','$unit_price','$inclusive_price','$exclusive_price','$gst_percentage','$gst_amount','$total_price','','','','pending')";
+     $sql = "INSERT INTO `tbl_order_peripheral`(`type`,`orderid`, `order_date`, `dealer_id`, `product`, `modalno`, `processor1`, `ram1`, `qty`, `unit_price`, `inclusive_price`, `exclusive_price`, `gst_percentage`, `gst_amount`, `total_price`, `payment_mode`, `remarks`, `attachment`, `order_status`) VALUES 
+	 ('dealer','$ordrid','$dt','$dealerid2','$pro','$modalno2','$processor2','$ram2','$qty2','$unit_price','$inclusive_price','$exclusive_price','$gst_percentage','$gst_amount','$total_price','','','','pending')";
 // exit();
             if (mysqli_query($conn, $sql)) {
 

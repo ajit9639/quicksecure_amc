@@ -65,7 +65,7 @@ $ordrid = $staff_id.'-'. ($tempid + 1);
 // $tamt = $qty2 * $price2;
 $dlrname = $staff_name;
 
-   $sql = "INSERT INTO tbl_order (orderid,order_date,dealer_id,dealer_name,product,modalno,processor1,ram1,hddssd,os1,graphics1,display1,    qty,unit_price,inclusive_price,exclusive_price,gst_percentage,gst_amount,total_price,order_status) VALUES ('$ordrid','$dt','$dealerid2','$dlrname','$pro','$modalno2','$processor2','$ram2','$hddssd2','$os2','$graphics2','$display2',      '$qty2','$unit_price','$inclusive_price','$exclusive_price','$gst_percentage','$gst_amount','$total_price','pending')";
+   $sql = "INSERT INTO tbl_order (type,orderid,order_date,dealer_id,dealer_name,product,modalno,processor1,ram1,hddssd,os1,graphics1,display1,    qty,unit_price,inclusive_price,exclusive_price,gst_percentage,gst_amount,total_price,order_status) VALUES ('staff','$ordrid','$dt','$dealerid2','$dlrname','$pro','$modalno2','$processor2','$ram2','$hddssd2','$os2','$graphics2','$display2',      '$qty2','$unit_price','$inclusive_price','$exclusive_price','$gst_percentage','$gst_amount','$total_price','pending')";
 // exit();
             if (mysqli_query($conn, $sql)) {
 				
