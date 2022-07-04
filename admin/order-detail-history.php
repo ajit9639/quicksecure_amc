@@ -50,7 +50,7 @@
                                             
         // $sql = "SELECT * FROM tbl_order where `type`='dealer' order by id desc";
         // echo "SELECT sum(qty) as qty1,sum(`gst_amount`) as gst1,sum(`total_price`) as total1,`order_date`,`remarks`,`order_status`,`payment_mode`,`orderid`,`attachment`,`status_date`,`id` FROM tbl_order where `type`='dealer' AND `product`='peripharel' group BY orderid order by orderid";
-        $sql = "SELECT sum(qty) as qty1,sum(`gst_amount`) as gst1,sum(`total_price`) as total1,`orderid`,`order_date`,`dealer_id`,`dealer_name`,`product`,`qty`,`gst_percentage`,`gst_amount`,`total_price`,`payment_mode`,`remarks`,`attachment`,`order_status`,`id`,`status_date` FROM tbl_order where `type`='dealer' AND `product`='Laptop' || `product`='desktop' group BY orderid order by orderid";
+        $sql = "SELECT sum(qty) as qty1,sum(`gst_amount`) as gst1,sum(`total_price`) as total1,`type`,`orderid`,`order_date`,`dealer_id`,`dealer_name`,`product`,`qty`,`gst_percentage`,`gst_amount`,`total_price`,`payment_mode`,`remarks`,`attachment`,`order_status`,`id`,`status_date` FROM `tbl_order` where `type`='dealer' AND `product`='Laptop' || `product`='desktop' group BY orderid order by orderid";
         $query = $conn->query($sql);
           while($crow = $query->fetch_assoc()){
                                   $idd = $crow['orderid'];

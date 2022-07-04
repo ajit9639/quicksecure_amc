@@ -74,9 +74,9 @@
 
 
       <td style='text-align:center;'>$crow[order_date]</td>
-      <td style='text-align:center;'>$crow[qty]</td>
-      <td style='text-align:center;'>$crow[gst_amount]</td>
-      <td style='text-align:center;'>$crow[total_price]</td>
+      <td style='text-align:center;'>$crow[qty1]</td>
+      <td style='text-align:center;'>$crow[gst1]</td>
+      <td style='text-align:center;'>$crow[total1]</td>
 
       <td style='text-align:center;'>$crow[payment_mode]</td>
       <td style='text-align:center;'>$crow[order_status]<br> $crow[status_date]</td>

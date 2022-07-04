@@ -1,4 +1,6 @@
-<?php include 'includes/session.php'; ?>
+<?php 
+
+include 'includes/session.php'; ?>
 <?php include 'includes/header.php'; ?>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -76,19 +78,24 @@
 
 
                                                 <tr>
-                                                 
-                                                <td valign='center'>Dealer Name : <?php echo $row1['dealer_name'] ?></td>
-                                                <td valign='center' >Dealer ID : <?php echo $row1['dealerid'] ?></td>
-                                                <td valign='center' >Dealer City : <?php echo $row1['city'] ?></td>  
-                                                <td valign='center'>Order Id : <?php echo $row['orderid'] ?></td>
-                                                <td valign='center'>Order Date : <?php echo $date ?></td>
-                                                
-                                                <td valign='center' colspan='2'>Payment Mode : <?php echo $row['payment_mode'] ?></td>
-                                                <td valign='center' colspan='3'>Remarks : <?php echo $row['remarks'] ?></td>
-                                                <td valign='center' colspan='3'>Attachment : 
-                                            <a href="upload/<?php echo $row['attachment'] ?>" download="download" class="btn btn-danger btn-xs">Download</a>
-                                            </td>
-                                                                                                
+
+                                                    <td valign='center'>Dealer Name : <?php echo $row1['dealer_name'] ?>
+                                                    </td>
+                                                    <td valign='center'>Dealer ID : <?php echo $row1['dealerid'] ?></td>
+                                                    <td valign='center'>Dealer City : <?php echo $row1['city'] ?></td>
+                                                    <td valign='center'>Order Id : <?php echo $row['orderid'] ?></td>
+                                                    <td valign='center'>Order Date : <?php echo $date ?></td>
+
+                                                    <td valign='center' colspan='2'>Payment Mode :
+                                                        <?php echo $row['payment_mode'] ?></td>
+                                                    <td valign='center' colspan='3'>Remarks :
+                                                        <?php echo $row['remarks'] ?></td>
+                                                    <td valign='center' colspan='3'>Attachment :
+                                                        <a href="upload/<?php echo $row['attachment'] ?>"
+                                                            download="download"
+                                                            class="btn btn-danger btn-xs">Download</a>
+                                                    </td>
+
                                                 </tr>
 
 
@@ -114,7 +121,9 @@ $s = 1;
 // echo $qr = "SELECT *, sum(total_price) as Total from `tbl_order` where `orderid`='$idd'"; exit;
 $sql1 = mysqli_query($conn , "SELECT * from `tbl_order` where `orderid`='$idd'");
 // $row22 = mysqli_fetch_array($sql1);
+$i = 0;
 while($row2 = mysqli_fetch_assoc($sql1)){
+    $all_total = $row2['exclusive_price'] * $row2['qty'];
 ?>
                                                 <tr>
                                                     <td><?php echo $s ?> </td>
@@ -129,10 +138,12 @@ while($row2 = mysqli_fetch_assoc($sql1)){
                                                     <td><?php echo $row2['qty'] ?> </td>
                                                     <td><?php echo $row2['gst_percentage'] ?>% </td>
                                                     <td><?php echo $row2['gst_amount'] ?> </td>
-                                                    <td><?php echo $row2['total_price'] ?> </td>
+                                                    <td><?php echo $all_total ?> </td>
                                                 </tr>
                                                 <?php 
 $s++;
+number_format((float)$i = $i + $all_total, 2, '.', '');
+
 } 
 
 
@@ -148,7 +159,7 @@ $row22 = mysqli_fetch_array($sql12);
                                                     <td colspan="9"></td>
 
                                                     <td colspan='2'><strong>Sub Total </strong></td>
-                                                    <td colspan='2'><?php echo number_format((float)$row22['ex'], 2, '.', '') ?></td>
+                                                    <td colspan='2'><?php echo $i ?></td>
                                                 </tr>
 
                                                 <!-- <tr>
@@ -160,12 +171,16 @@ $row22 = mysqli_fetch_array($sql12);
                                                 <tr>
                                                     <td colspan="9"></td>
                                                     <td colspan='2'><strong>GST Amt. </strong></td>
-                                                    <td colspan='2'><?php  echo number_format((float)$row22['gst'], 2, '.', '') ?></td>
+                                                    <td colspan='2'>
+                                                        <?php  echo number_format((float)$row22['gst'], 2, '.', '') ?>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="9"></td>
                                                     <td colspan='2'><strong>Total Price </strong></td>
-                                                    <td colspan='2'><?php  echo number_format((float)$row22['Total'], 2, '.', '') ?></td>
+                                                    <td colspan='2'>
+                                                        <?php  echo number_format((float)$i + $row22['gst'], 2, '.', '') ?>
+                                                    </td>
                                                 </tr>
 
 
@@ -176,7 +191,7 @@ $row22 = mysqli_fetch_array($sql12);
                                     </div>
                                     <hr>
 
-<?php
+                                    <?php
 $get_my_data12 = mysqli_fetch_assoc(mysqli_query($conn , "SELECT * FROM `tbl_order` WHERE `orderid`='$oddid'"));
 $data11 = $get_my_data12['payment_mode'];
 $data12 = $get_my_data12['remarks'];

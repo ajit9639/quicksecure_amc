@@ -124,7 +124,9 @@ $sql1 = mysqli_query($conn , "SELECT * from `tbl_order_peripheral` where `orderi
 
 // $inclusive_price_amt = $sql1['inclusive_price'];
 // $row22 = mysqli_fetch_array($sql1);
+$i = 0;
 while($row2 = mysqli_fetch_assoc($sql1)){
+    $all_total = $row2['exclusive_price'] * $row2['qty'];
 ?>
                                                 <tr>
                                                     <td><?php echo $s ?> </td>
@@ -136,10 +138,11 @@ while($row2 = mysqli_fetch_assoc($sql1)){
                                                     <td><?php echo $row2['qty'] ?> </td>
                                                     <td><?php echo $row2['gst_percentage'] ?>% </td>
                                                     <td><?php echo $row2['gst_amount'] ?> </td>
-                                                    <td><?php echo $row2['total_price'] ?> </td>
+                                                    <td><?php echo $all_total ?> </td>
                                                 </tr>
                                                 <?php 
 $s++;
+number_format((float)$i = $i + $all_total, 2, '.', '');
 } 
 
 
