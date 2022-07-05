@@ -80,7 +80,7 @@
 
       <td style='text-align:center;'>$crow[payment_mode]</td>
       <td style='text-align:center;'>$crow[order_status]</td>
-      <td style='text-align:center;'>$crow[remarks]</td>
+      <td style='text-align:center;'>$crow[remarks] / $crow[status_date]</td>
       <td style='text-align:center;'>
       <a href='upload/$crow[attachment]' class='btn btn-xs btn-danger'>Download</a>
       </td>

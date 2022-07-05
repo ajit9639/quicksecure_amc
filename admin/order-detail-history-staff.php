@@ -33,9 +33,9 @@
                                             <th style='width:0%;'>SNO</th>
                                             <th>Order ID</th>
                                             <th>Order Date</th>
-                                            <th>Dealer Name / ID</th>
-                                            <th>QTY</th>
-                                            <th>GST%</th>
+                                            <th>Staff Name / ID</th>
+                                            <th>Staff City</th>
+                                            
                                             <th>GST Amount</th>
                                             <th>Total Amount</th>
                                             <th>Payment Mode</th>
@@ -53,16 +53,17 @@
           while($crow = $query->fetch_assoc()){
                                   $idd = $crow['orderid'];
                                   $attach = $crow['attachment'];
+                                  $dlid = $crow['dealer_id'];
+$get_delid = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `tbl_staff_master` WHERE `id`='$dlid'"));
 
-                                  
       echo "<tr><td style='text-align:center;'>
       <input type='hidden' style='width:20px;border-width:0px;border:none;background: transparent;' id='txtN' name='txtN' value='$crow[id]' readonly>$crow[id]</td>
       <td style='text-align:center;'><a href='order-detail-view.php?odid=$crow[orderid]'>$crow[orderid]</a></td>
       <td style='text-align:center;'>$crow[order_date]</td>
       <td style='text-align:center;'>$crow[dealer_name] / QSDL$crow[dealer_id]</td>
       
-      <td style='text-align:center;'>$crow[qty]</td>
-      <td style='text-align:left;'>$crow[gst_percentage]</td>
+      
+      <td style='text-align:left;'>$get_delid[city]</td>
       <td style='text-align:left;'>$crow[gst_amount]</td>
       <td style='text-align:left;'>$crow[total_price]</td>
 
@@ -75,7 +76,7 @@
 
       <td style='text-align:center;'>$crow[remarks]</td>
 
-      <td style='text-align:center;'><a href='../dealer/upload/$attach' class='btn btn-xs btn-success'>Attachment</a></td>
+      <td style='text-align:center;'><a href='../amc/upload/$attach' class='btn btn-xs btn-success'>Attachment</a></td>
       <td style='text-align:center;'><a href='update_order.php?id=$idd' class='btn btn-xs btn-success'>Update Status</a></td>
   
 

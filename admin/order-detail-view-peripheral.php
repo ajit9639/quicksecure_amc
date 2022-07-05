@@ -158,8 +158,8 @@ $row22 = mysqli_fetch_array($sql12);
                                                 <tr>
                                                     <td colspan="9"></td>
 
-                                                    <td colspan='2'><strong>Inclusive Price </strong></td>
-                                                    <td colspan='2'><?php echo number_format((float)$row22['ex'], 2, '.', '') ?></td>
+                                                    <td colspan='2'><strong>Sub Total </strong></td>
+                                                    <td colspan='2'><?php echo $i; ?></td>
                                                 </tr>
 
                                                 <!-- <tr>
@@ -176,7 +176,7 @@ $row22 = mysqli_fetch_array($sql12);
                                                 <tr>
                                                     <td colspan="9"></td>
                                                     <td colspan='2'><strong>Total Price </strong></td>
-                                                    <td colspan='2'><?php echo number_format((float)$row22['Total'], 2, '.', '') ?></td>
+                                                    <td colspan='2'><?php echo number_format((float)$i + $row22['gst'], 2, '.', '') ?></td>
                                                 </tr>
 
 

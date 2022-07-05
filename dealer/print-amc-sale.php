@@ -228,7 +228,7 @@ if ($pmode==""){
 
                 if (move_uploaded_file($file, $destination)) {
 
-		echo "update tbl_amc_sale_dealer set payment_option='$pmode', payment_remarks='$tRemarks', payment_attachment='$filename' where id='$idd'";exit();
+		// echo "update tbl_amc_sale_dealer set payment_option='$pmode', payment_remarks='$tRemarks', payment_attachment='$filename' where id='$idd'";exit();
     $sql = "update tbl_amc_sale_dealer set payment_option='$pmode', payment_remarks='$tRemarks', payment_attachment='$filename' where id='$idd'";
 
 		if($conn->query($sql)){
@@ -278,7 +278,7 @@ if ($pmode==""){
         </div>
 
         <?php include 'includes/footer.php'; ?>
-        <?php include 'includes/del_amc_model.php'; ?>
+        
     </div>
     <?php include 'includes/scripts.php'; ?>
     <script>

@@ -46,7 +46,7 @@
             $dateTimeObj = date_create($row['sale_dt']); 
             $dt1=date_format($dateTimeObj, "d-m-Y");
  
-         $sql1 = "SELECT * FROM tbl_dealer where dealerid='$row[dealer_name]' order by id desc";
+         $sql1 = "SELECT * FROM tbl_dealer where id='$row[dealer_name]' order by id desc";
         $query1 = $conn->query($sql1);
           if($row1 = $query1->fetch_assoc()){$dlrid=$row1['dealerid'];}
 

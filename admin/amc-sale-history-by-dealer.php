@@ -34,8 +34,7 @@
           <th>Order Date</th>
           <th>Dealer Id / City</th>
           <th>Package Name</th>
-          <th>QTY</th>
-          <th>GST%</th>
+          
           <th>GST Amount</th>
           <th>Total Amount</th>
           <th>Payment Mode</th>
@@ -67,14 +66,13 @@
               <td>QSDL0$delid / $delcity</td>
               <td>".$row['package_name']."</td>
               
-              <td>".$row['qty']."</td>
-              <td>".$row['gst']."</td>
+              
               <td>".$row['gstamt']."</td>
               <td>".$row['tot_amt']."</td>
               <td>".$row['payment_option']."</td>
               <td valign='center'>".$row['order_status']."<br>".$row['status_date']."</td>
               <td>".$row['payment_remarks']."</td>
-              <td><a href='upload/$attach' class='btn btn-success btn-xs'>Attachment</a>   </td>
+              <td><a href='../dealer/upload/$attach' class='btn btn-success btn-xs'>Attachment</a>   </td>
               <td><a href='update_order_amc.php?id=$delamc' class='btn btn-xs btn-success'>Update Status</a></td>
               
 

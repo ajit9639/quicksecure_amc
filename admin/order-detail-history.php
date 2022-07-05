@@ -34,15 +34,15 @@
                                             <th>Order ID</th>
                                             <th>Order Date</th>
                                             <th>Dealer Name / ID</th>
-                                            <th>QTY</th>
-                                            <th>GST%</th>
+                                            <th>Dealer City</th>
+                                            
                                             <th>GST Amount</th>
                                             <th>Total Amount</th>
                                             <th>Payment Mode</th>
                                             <th>Order Status</th>
                                             <th>Remarks</th>
                                             <th>Attachment</th>
-                                            <th>Edit Status</th>
+                                            <th>Action</th>
 
                                         </thead>
                                         <tbody>
@@ -57,7 +57,7 @@
                                   $attach = $crow['attachment'];
                                   $del_id = $crow['dealer_id'];
                                   
-    
+    $del_city = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `tbl_dealer` where `id`='$del_id'" ));
                                   
       echo "<tr><td style='text-align:center;'>
       <input type='hidden' style='width:20px;border-width:0px;border:none;background: transparent;' id='txtN' name='txtN' value='$crow[id]' readonly>$crow[id]</td>
@@ -65,8 +65,8 @@
       <td style='text-align:center;'>$crow[order_date]</td>
       <td style='text-align:center;'>$crow[dealer_name] / QSDL$crow[dealer_id]</td>
       
-      <td style='text-align:center;'>$crow[qty]</td>
-      <td style='text-align:left;'>$crow[gst_percentage]</td>
+      <td style='text-align:center;'>$del_city[city]</td>
+      
       <td style='text-align:left;'>$crow[gst_amount]</td>
       <td style='text-align:left;'>$crow[total_price]</td>
 

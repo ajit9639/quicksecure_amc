@@ -34,8 +34,7 @@
                                             <th>Order No.</th>
                                             <th>order Date</th>
                                             <th>Dealer Id / City</th>
-                                            <th>QTY</th>
-                                            <th>GST %</th>
+                                            
                                             <th>Gst Amt</th>
                                             <th>Total Amt</th>
                                             <th>Payment Mode </th>
@@ -67,8 +66,7 @@
               <td>".$get_dealer['dealerid']. '<br>' . $get_dealer['city']."</td>
               
 
-              <td>".$row['qty']."</td>
-              <td>".$row['gst_percentage']."</td>
+              
               <td>".$row['gst_amount']."</td>
               <td>".$row['total_price']."</td>
 
