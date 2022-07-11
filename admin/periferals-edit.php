@@ -43,8 +43,9 @@
       var txtTotPrice1 = $('#txtTotPrice').val();
       var txtBrandName1 = $('#txtBrandName').val();
       var txtColorName1 = $('#txtColorName').val();
+      var stock = $('#stock').val();
    
-        $.post('periferals-update-data.php',{action: "add1", txtID:txtID1,txtItemName:txtItemName1,txtPrice:txtPrice1,txtGST:txtGST1,txtGSTAmt:txtGSTAmt1,txtTotPrice:txtTotPrice1,txtBrandName:txtBrandName1,txtColorName:txtColorName1},function(res){
+        $.post('periferals-update-data.php',{action: "add1", txtID:txtID1,txtItemName:txtItemName1,txtPrice:txtPrice1,txtGST:txtGST1,txtGSTAmt:txtGSTAmt1,txtTotPrice:txtTotPrice1,txtBrandName:txtBrandName1,txtColorName:txtColorName1,stock:stock},function(res){
           $('#result').html(res);
         });   
 
@@ -71,6 +72,7 @@
                   $totalamt = $crow['totalamt'];
                   $colorname = $crow['color_name'];
                   $brandname = $crow['brand_name'];
+                  $stock = $crow['stock'];
               }
                    
             ?> 
@@ -150,6 +152,11 @@
       <label for="txtTotPrice" class="col-sm-2 control-label">Total Price</label>
         <div class="col-sm-2">
           <input type="text" class="form-control pull-right" id="txtTotPrice" name="txtTotPrice" readonly value="<?php echo $totalamt;?>">
+        </div>
+
+        <label for="stock" class="col-sm-2 control-label">Stock</label>
+        <div class="col-sm-2">
+          <input type="number" class="form-control pull-right" id="stock" name="stock"   value="<?php echo $stock;?>">
         </div>
 
   </div>  

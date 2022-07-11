@@ -50,7 +50,9 @@
       var txtGST1 = $('#txtGST').val();
       var txtGSTAmt1 = $('#txtGSTAmt').val();
       var txtProductType1 = $('#txtProductType').val();
+      
 
+      
    
 			//syntax - $.post('filename', {data}, function(response){});
 				$.post('insert-item-data1.php',{action: "add1", txtModalNo:txtModalNo1,txtProcessor:txtProcessor1,txtRam:txtRam1,txthddSsd:txthddSsd1,txtOS:txtOS1,txtGraphics:txtGraphics1,txtDisplay:txtDisplay1,txtPrice:txtPrice1,txtExPrice:txtExPrice1,txtOffice:txtOffice1,txtColor:txtColor1,txtGST:txtGST1,txtGSTAmt:txtGSTAmt1,txtProductType:txtProductType1},function(res){
@@ -222,6 +224,11 @@ document.getElementById("txtExPrice").value = examt.toFixed(2) ;
         <div class="col-sm-4">
           <input type="text" class="form-control pull-right" id="txtTotPrice" name="txtTotPrice" readonly>
         </div>
+
+        <label for="stock" class="col-sm-2 control-label">Enter Stock Value</label>
+  <div class="col-sm-4">
+    <input type="number" class="form-control pull-right" id="stock" name="stock" required>
+  </div>
 
   </div>  
   <!-- #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ -->        

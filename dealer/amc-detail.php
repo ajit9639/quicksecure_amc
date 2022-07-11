@@ -66,7 +66,9 @@
         </thead>
         <tbody>
       <?php //
+      $iiid = $_SESSION["deal_id"];
       $dlid = $_SESSION['dlrid'];
+      $idds = $_SESSION["del_id"];
         $sql = "SELECT * FROM `tbl_amc_sale_dealer` where dealer_name='$dlid' order by id desc";
         $query = $conn->query($sql);
           while($row = $query->fetch_assoc()){
@@ -74,7 +76,7 @@
             echo "
             <tr>
               <td valign='center'>".$row['id']."</td>
-              <td valign='center'><a href='amc-sale-detail.php?amcsid=".$row['id']."'>QSDL001".$row['id']."</a></td>
+              <td valign='center'><a href='amc-sale-detail.php?amcsid=".$row['id']."'>$iiid".$row['id']."</a></td>
               <td>".$row['sale_dt']."</td>
               <td>QSDL0".$row['dealer_name'].' / '.$row['city1']."</td>
               
@@ -82,7 +84,7 @@
               <td>".$row['gst']."</td>
               <td>".$row['gstamt']."</td>
               <td>".$row['tot_amt']."</td>
-              <td>".$row['payment_remarks']."</td>
+              <td>".$row['payment_option']."</td>
               <td>".$row['order_status']."<br>".$row['status_date']."</td>
 
               

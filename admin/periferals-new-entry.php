@@ -43,8 +43,9 @@
       var txtBrandName1 = $('#txtBrandName').val();
       var txtColorName1 = $('#txtColorName').val();
       var txtExPrice1 = $('#txtExPrice').val();
+      var stock = $('#stock').val();
    
-				$.post('periferals-insert-data.php',{action: "add1", txtItemName:txtItemName1,txtPrice:txtPrice1,txtExPrice:txtExPrice1,txtGST:txtGST1,txtGSTAmt:txtGSTAmt1,txtTotPrice:txtTotPrice1,txtBrandName:txtBrandName1,txtColorName:txtColorName1},function(res){
+				$.post('periferals-insert-data.php',{action: "add1", txtItemName:txtItemName1,txtPrice:txtPrice1,txtExPrice:txtExPrice1,txtGST:txtGST1,txtGSTAmt:txtGSTAmt1,txtTotPrice:txtTotPrice1,txtBrandName:txtBrandName1,txtColorName:txtColorName1,stock:stock},function(res){
 					$('#result').html(res);
 				});		
 
@@ -169,6 +170,14 @@ document.getElementById("txtExPrice").value = examt.toFixed(2) ;
         </div>
 
   </div>  
+
+  <div class="form-group">   
+      <label for="stock" class="col-sm-2 control-label">Enter Stock</label>
+        <div class="col-sm-2">
+          <input type="number" class="form-control pull-right" id="stock" name="stock" required>
+        </div>
+
+  </div>
   <!-- #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ #@ -->        
  
 	

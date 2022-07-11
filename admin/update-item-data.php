@@ -20,8 +20,9 @@ include 'includes/session.php';
        $tGST1 = $_POST['txtGST'];
        $tGSTAmt1 = $_POST['txtGSTAmt'];
        $tProductType1 = $_POST['txtProductType'];		
+       $stock = $_POST['stock'];		
 
-		$sql = "update tbl_item set product='$tProductType1',modalno='$tModalNo1',processor1='$tProcessor1',ram1='$tRam1',hddssd='$thddSsd1',os1='$tOS1',office1='$tOffice1',graphics1='$tGraphics1',display1='$tDisplay1',color1='$tColor1',gst_per='$tGST1',gst_amt='$tGSTAmt1',price='$tPrice1',excludingprice='$tExPrice1' where id='$tID'";
+		$sql = "update tbl_item set product='$tProductType1',modalno='$tModalNo1',processor1='$tProcessor1',ram1='$tRam1',hddssd='$thddSsd1',os1='$tOS1',office1='$tOffice1',graphics1='$tGraphics1',display1='$tDisplay1',color1='$tColor1',gst_per='$tGST1',gst_amt='$tGSTAmt1',price='$tPrice1',excludingprice='$tExPrice1',stock='$stock' where id='$tID'";
 
 		if($conn->query($sql)){
 			//$_SESSION['success'] = 'Record updated successfully';

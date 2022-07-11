@@ -43,6 +43,7 @@
           <th>GST %</th>
           <th>GST Amt</th>
           <th>Price</th>
+          <th>Stock</th>
           <th>Tools</th>
         </thead>
         <tbody>
@@ -67,6 +68,7 @@
               <td>".$row['gst_per']."</td>
               <td>".$row['gst_amt']."</td>
               <td>".$row['price']."</td>
+              <td>".$row['stock']."</td>
 
               <td>            
                 <a href='edit-item.php?id=".$row['id']."' class='btn btn-info btn-sm btn-flat'><i class='fa fa-edit'></i> Edit</a>

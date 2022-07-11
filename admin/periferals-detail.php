@@ -39,6 +39,7 @@
           <th>GST %</th>
           <th>Gst Amt</th>
           <th>Total Amt</th>
+          <th>Stock</th>
           <th>Tools</th>
         </thead>
         <tbody>
@@ -60,6 +61,7 @@
               <td>".$row['gst']."</td>
               <td>".$row['gstamt']."</td>
               <td>".$row['totalamt']."</td>
+              <td>".$row['stock']."</td>
  
 
               <td>            

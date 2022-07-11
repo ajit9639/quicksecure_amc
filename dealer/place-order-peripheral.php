@@ -43,6 +43,27 @@ include 'includes/session.php'; ?>
                                     var rate1 = document.getElementById("txtRate").value;
                                     var qt = document.getElementById("txtQTY").value;
                                     document.getElementById("txtTotal").value = rate1 * qt;
+
+
+
+                                    var price1 = document.getElementById("txtTotal").value;
+                                    var gstper = document.getElementById("txtGST").value;
+
+                                    if (document.getElementById("txtGST").value == "") {
+                                        gstper = 0;
+                                    }
+
+                                    var gstamt = 0;
+                                    var examt = 0;
+
+                                    examt = price1 / 1.18;
+                                    document.getElementById("txtExPrice").value = examt.toFixed(2);
+
+                                    gstamt = price1 - examt; // (price1 * gstper) /100;
+
+                                    document.getElementById("txtGSTAmt").value = (price1 - examt).toFixed(2);
+                                    document.getElementById("txtTotPrice").value = (+examt) + (+gstamt);
+
                                 }
                                 </script>
 
@@ -63,7 +84,9 @@ include 'includes/session.php'; ?>
                             $proc=$crow['brand_name'];
 
                             $ram2=$crow['color_name'];
-
+                            $gst=$crow['gst'];
+                            $stock=$crow['stock'];
+                            
 
                           //   $hddssd2=$crow['hddssd'];
                           //   $os2=$crow['os1'];
@@ -84,10 +107,13 @@ include 'includes/session.php'; ?>
                             $display2="";
                            $rt="";
                            $prd="";
+                           $gst="";
+                           $stock="";
                           }
                       ?>
 
-                                <form role="form" method="POST" action="ins_data-peripherals.php" name="frmForm" id="frmForm">
+                                <form role="form" method="POST" action="ins_data-peripherals.php" name="frmForm"
+                                    id="frmForm">
                                     <input type="hidden" name="txtRate" id="txtRate" value="<?php echo $rt;?>">
 
                                     <table width="100%">
@@ -118,8 +144,8 @@ $_SESSION['ordrid'] = $ordrid;
                                             <td>&nbsp;&nbsp;</td>
                                             <td>Product</td>
                                             <td>
-                                                <input type="text" name="txtProductType" id="txtProductType" class="form-control"
-                                                    value="peripharel" readonly>
+                                                <input type="text" name="txtProductType" id="txtProductType"
+                                                    class="form-control" value="peripharel" readonly>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -170,7 +196,7 @@ $_SESSION['ordrid'] = $ordrid;
                                                 </div>
                                             </td>
                                         </tr>
-                                       
+
                                         <tr>
                                             <!-- <td>
                                                 <div class="form-group">
@@ -183,8 +209,10 @@ $_SESSION['ordrid'] = $ordrid;
                                             <td>
                                                 <div class="form-group">
                                                     <label>Qty</label>
-                                                    <input type="text" name="txtQTY" id="txtQTY" class="form-control"
-                                                        onchange="javascript:calcu();" placeholder="Enter ..." required>
+                                                    <b style="color:red">(Our stock value is : <?php echo $stock;?>)</b>
+                                                    <input type="number" class="form-control pull-right" id="mystock" name="mystock" value="<?php echo $stock ?>" style="display:none">
+                                                    <input type="text" name="txtQTY" id="txtQTY" class="form-control" onchange="javascript:calcu();" placeholder="Enter ..." required>
+                                                    <b id="errorMsg" style="display:none;color:red">you can enter quantity less then stock value</b>
                                                 </div>
                                             </td>
                                             <td>&nbsp;&nbsp;</td>
@@ -223,7 +251,7 @@ $_SESSION['ordrid'] = $ordrid;
 
                                         <!-- gst -->
                                         <tr>
-                                        <td>
+                                            <td>
                                                 <div class="form-group">
                                                     <label>Total Exclusive Price</label>
                                                     <input type="text" class="form-control pull-right" id="txtExPrice"
@@ -234,13 +262,16 @@ $_SESSION['ordrid'] = $ordrid;
                                             <td>
                                                 <div class="form-group">
                                                     <label>GST%</label>
-                                                    <select class="form-control pull-right" id="txtGST" name="txtGST"
+
+                                                    <input type="text" class="form-control pull-right" id="txtGST"
+                                                        name="txtGST" value="<?php echo $gst ?>" readonly>
+                                                    <!-- <select class="form-control pull-right" id="txtGST" name="txtGST"
                                                         onchange="calcus()">
                                                         <option value="0">0</option>
                                                         <option value="12">12</option>
                                                         <option value="18">18</option>
                                                         <option value="28">28</option>
-                                                    </select>
+                                                    </select> -->
                                                 </div>
                                             </td>
                                             <td>&nbsp;&nbsp;</td>
@@ -254,7 +285,7 @@ $_SESSION['ordrid'] = $ordrid;
                                         </tr>
 
                                         <tr>
-                                        <td>
+                                            <td>
                                                 <div class="form-group">
                                                     <label>Total Price</label>
                                                     <input type="text" class="form-control pull-right" id="txtTotPrice"
@@ -262,13 +293,7 @@ $_SESSION['ordrid'] = $ordrid;
                                                 </div>
                                             </td>
                                             <td>&nbsp;&nbsp;</td>
-                                            <!-- <td>
-                                                <div class="form-group">
-                                                    <label>Total Price</label>
-                                                    <input type="text" class="form-control pull-right" id="txtTotPrice"
-                                                        name="txtTotPrice" readonly>
-                                                </div>
-                                            </td> -->
+                                            
 
                                         </tr>
                                         <!-- //gst -->
@@ -288,6 +313,27 @@ $_SESSION['ordrid'] = $ordrid;
                                             <td></td>
                                         </tr>
                                     </table>
+
+
+
+
+                                   <!-- stock script -->
+                                   <script>
+                                    $("#txtQTY").keyup(function() {
+                                       
+                                        if (parseInt($('#txtQTY').val()) <= parseInt($('#mystock').val())) {
+                                            $('#errorMsg').hide();
+                                            $('#add1').show();
+                                        } else {
+                                            $('#errorMsg').show();                                            
+                                            $('#add1').hide();
+                                        }
+                                    });
+                                    </script>
+                                    <!-- // stock script --> 
+
+
+
                                     <script type="text/javascript">
                                     function calcus() {
                                         var price1 = document.getElementById("txtTotal").value;
@@ -346,6 +392,7 @@ $_SESSION['ordrid'] = $ordrid;
                                                             var gst_amount = $('#txtGSTAmt').val();
 
                                                             var total_price = $('#txtTotPrice').val();
+                                                            var stock = $('#stock').val();
 
                                                             $.post('ins_data-peripherals.php', {
                                                                 action: "add1",
@@ -362,7 +409,8 @@ $_SESSION['ordrid'] = $ordrid;
                                                                 txtExPrice: exclusive_price,
                                                                 txtGST: gst_percentage,
                                                                 txtGSTAmt: gst_amount,
-                                                                txtTotPrice: total_price
+                                                                txtTotPrice: total_price,
+                                                                stock: stock
                                                             }, function(res) {
                                                                 $('#result').html(res);
                                                             });
@@ -394,9 +442,9 @@ $_SESSION['ordrid'] = $ordrid;
                                         },
                                         select: function(event, ui) {
                                             $('#txtProcessor').val(ui.item
-                                            .label); // display the selected text
+                                                .label); // display the selected text
                                             $('#txtRam').val(ui.item
-                                            .value); // save selected id to input        
+                                                .value); // save selected id to input        
                                             return false;
                                         },
                                         focus: function(event, ui) {

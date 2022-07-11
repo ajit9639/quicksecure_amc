@@ -96,6 +96,8 @@ include 'includes/session.php'; ?>
                                                             class="btn btn-danger btn-xs">Download</a>
                                                     </td>
 
+                                                   
+
                                                 </tr>
 
 
@@ -125,6 +127,7 @@ $i = 0;
 while($row2 = mysqli_fetch_assoc($sql1)){
     $all_total = $row2['exclusive_price'] * $row2['qty'];
 ?>
+
                                                 <tr>
                                                     <td><?php echo $s ?> </td>
                                                     <td><?php echo $row2['modalno'] ?> </td>

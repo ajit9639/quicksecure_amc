@@ -15,8 +15,9 @@ include 'includes/session.php';
 		$tTotPrice= $_POST['txtTotPrice'];
 		$tBrandName= $_POST['txtBrandName'];
 		$tColorName= $_POST['txtColorName'];  
+		$stock= $_POST['stock'];  
   		  		
-		$sql = "update tbl_periferals set item_name='$tItemName',brand_name='$tBrandName',color_name='$tColorName',price='$tPrice',gst='$tGST',gstamt='$tGSTAmt',totalamt='$tTotPrice' where id='$tID'";
+		$sql = "update tbl_periferals set item_name='$tItemName',brand_name='$tBrandName',color_name='$tColorName',price='$tPrice',gst='$tGST',gstamt='$tGSTAmt',totalamt='$tTotPrice',stock='$stock' where id='$tID'";
 
 		if($conn->query($sql)){
 			//$_SESSION['success'] = 'Record updated successfully';

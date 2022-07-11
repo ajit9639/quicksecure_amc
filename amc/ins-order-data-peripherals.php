@@ -55,12 +55,12 @@ $ordrid = 'QSEM0'.'-PH-'. ($tempid + 1);;
 
 		// $price2 = $crow['price'];
 		$pro= $crow['product'];
-
+		$all_total = $crow['exclusive_price'] * $crow['qty'];
 // $tamt = $qty2 * $price2;
 // $dlrname = $_SESSION['user'];
 
-     $sql = "INSERT INTO `tbl_order_peripheral`(`type`,`orderid`, `order_date`, `dealer_id`, `product`, `modalno`, `processor1`, `ram1`, `qty`, `unit_price`, `inclusive_price`, `exclusive_price`, `gst_percentage`, `gst_amount`, `total_price`, `payment_mode`, `remarks`, `attachment`, `order_status`) VALUES 
-	 ('staff','$ordrid','$dt','$dealerid2','$pro','$modalno2','$processor2','$ram2','$qty2','$unit_price','$inclusive_price','$exclusive_price','$gst_percentage','$gst_amount','$total_price','','','','pending')";
+     $sql = "INSERT INTO `tbl_order_peripheral`(`type`,`orderid`, `order_date`, `dealer_id`, `product`, `modalno`, `processor1`, `ram1`, `qty`, `unit_price`, `inclusive_price`, `exclusive_price`, `gst_percentage`, `gst_amount`, `total_price`, `payment_mode`, `remarks`, `attachment`, `order_status`,`all_total`) VALUES 
+	 ('staff','$ordrid','$dt','$dealerid2','$pro','$modalno2','$processor2','$ram2','$qty2','$unit_price','$inclusive_price','$exclusive_price','$gst_percentage','$gst_amount','$total_price','','','','pending','$all_total')";
 // exit();
             if (mysqli_query($conn, $sql)) {
 

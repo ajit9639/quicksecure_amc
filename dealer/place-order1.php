@@ -43,21 +43,6 @@ include 'includes/session.php'; ?>
                                     var rate1 = document.getElementById("txtRate").value;
                                     var qt = document.getElementById("txtQTY").value;
                                     document.getElementById("txtTotal").value = rate1 * qt;
-                                    var price1 = document.getElementById("txtTotal").value;
-                                    var gstper = document.getElementById("txtGST").value;
-                                    if (document.getElementById("txtGST").value == "") {
-                                        gstper = 0;
-                                    }
-                                    var gstamt = 0;
-                                    var examt = 0;
-
-                                    examt = price1 / 1.18;
-                                    document.getElementById("txtExPrice").value = examt.toFixed(2);
-
-                                    gstamt = price1 - examt; // (price1 * gstper) /100;
-
-                                    document.getElementById("txtGSTAmt").value = (price1 - examt).toFixed(2);
-                                    document.getElementById("txtTotPrice").value = (+examt) + (+gstamt);
                                 }
                                 </script>
 
@@ -84,8 +69,7 @@ include 'includes/session.php'; ?>
                             $display2=$crow['display1'];
                            $rt=$crow['price'];
                            $prd=$crow['product'];
-                           $gst_per=$crow['gst_per'];
-                           $stock=$crow['stock'];
+
                             }  
                           }else{
                             $mdn="";
@@ -98,8 +82,6 @@ include 'includes/session.php'; ?>
                             $display2="";
                            $rt="";
                            $prd="";
-                           $gst_per="";
-                           $stock="";
                           }
                       ?>
 
@@ -117,10 +99,10 @@ include 'includes/session.php'; ?>
           }   
 
 
-          $dealer_id_name =  $_SESSION['staffid'];
+          $dealer_id_name =  $_SESSION['deal_id'];
 // $ordrid = 'QSDL' . str_pad(($tempid + 1), 3, '0', STR_PAD_LEFT);
 // $ordrid = $dealer_id_name . str_pad(($tempid + 1),  '-', STR_PAD_LEFT);
-$ordrid = $dealer_id_name.'-CL-'. ($tempid + 1);
+$ordrid = $dealer_id_name.'-LD-'. ($tempid + 1);
 ?>
 
                                             <td><input type="text" name="txtOrderID" id="txtOrderID"
@@ -229,14 +211,8 @@ $ordrid = $dealer_id_name.'-CL-'. ($tempid + 1);
                                             <td>
                                                 <div class="form-group">
                                                     <label>Qty</label>
-                                                    <b style="color:red">(Our stock value is : <?php echo $stock;?>)</b>
-                                                    <input type="number" class="form-control pull-right" id="mystock"
-                                                        name="mystock" value="<?php echo $stock ?>"
-                                                        style="display:none">
                                                     <input type="text" name="txtQTY" id="txtQTY" class="form-control"
                                                         onchange="javascript:calcu();" placeholder="Enter ..." required>
-                                                    <b id="errorMsg" style="display:none;color:red">you can enter
-                                                        quantity less then stock value</b>
                                                 </div>
                                             </td>
                                             <td>&nbsp;&nbsp;</td>
@@ -286,15 +262,13 @@ $ordrid = $dealer_id_name.'-CL-'. ($tempid + 1);
                                             <td>
                                                 <div class="form-group">
                                                     <label>GST%</label>
-
-                                                    <input type="text" class="form-control pull-right" id="txtGST"
-                                                        name="txtGST" value="<?php echo $gst_per ?>" readonly>
-                                                    <!-- <select class="form-control pull-right" id="txtGST" name="txtGST" onchange="calcus()">            
-            <option value="0">0</option>
-            <option value="12">12</option>
-            <option value="18">18</option>
-            <option value="28">28</option>
-          </select>           -->
+                                                    <select class="form-control pull-right" id="txtGST" name="txtGST"
+                                                        onchange="calcus()">
+                                                        <option value="0">0</option>
+                                                        <option value="12">12</option>
+                                                        <option value="18">18</option>
+                                                        <option value="28">28</option>
+                                                    </select>
                                                 </div>
                                             </td>
                                         </tr>
@@ -334,21 +308,6 @@ $ordrid = $dealer_id_name.'-CL-'. ($tempid + 1);
                                             <td></td>
                                         </tr>
                                     </table>
-
-                                    <!-- stock script -->
-                                    <script>
-                                    $("#txtQTY").keyup(function() {
-
-                                        if (parseInt($('#txtQTY').val()) <= parseInt($('#mystock').val())) {
-                                            $('#errorMsg').hide();
-                                            $('#add1').show();
-                                        } else {
-                                            $('#errorMsg').show();
-                                            $('#add1').hide();
-                                        }
-                                    });
-                                    </script>
-                                    <!-- // stock script -->
                                     <script type="text/javascript">
                                     function calcus() {
                                         var price1 = document.getElementById("txtTotal").value;

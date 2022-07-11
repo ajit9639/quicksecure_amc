@@ -8,5 +8,4 @@ if($_SERVER['SERVER_NAME']=="localhost"){
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-
 ?>

@@ -51,9 +51,10 @@
       var txtGST1  = $('#txtGST').val();
       var txtGSTAmt1 = $('#txtGSTAmt').val();
       var txtTotPrice1  = $('#txtTotPrice').val();
+      var stock  = $('#stock').val();
   
       //syntax - $.post('filename', {data}, function(response){});
-        $.post('update-item-data.php',{action: "add1", txtID:txtID1,txtProductType:txtProductType1,txtModalNo:txtModalNo1,txtProcessor:txtProcessor1,txtRam:txtRam1,txthddSsd:txthddSsd1,txtOS:txtOS1,txtOffice:txtOffice1,txtGraphics:txtGraphics1,txtColor:txtColor1,txtDisplay:txtDisplay1,txtPrice:txtPrice1,txtExPrice:txtExPrice1,txtGST:txtGST1,txtGSTAmt:txtGSTAmt1,txtTotPrice:txtTotPrice1},function(res){
+        $.post('update-item-data.php',{action: "add1", txtID:txtID1,txtProductType:txtProductType1,txtModalNo:txtModalNo1,txtProcessor:txtProcessor1,txtRam:txtRam1,txthddSsd:txthddSsd1,txtOS:txtOS1,txtOffice:txtOffice1,txtGraphics:txtGraphics1,txtColor:txtColor1,txtDisplay:txtDisplay1,txtPrice:txtPrice1,txtExPrice:txtExPrice1,txtGST:txtGST1,txtGSTAmt:txtGSTAmt1,txtTotPrice:txtTotPrice1,stock:stock},function(res){
           $('#result').html(res);
         });   
 
@@ -120,6 +121,7 @@
                   $tPrice = $crow['price'];
                   $tExPrice = $crow['excludingprice'];
                   $tTotPrice = $crow['excludingprice'];
+                  $stock = $crow['stock'];
                   
               }
                    
@@ -277,6 +279,11 @@
       <label for="txtTotPrice" class="col-sm-2 control-label">Total Price</label>
         <div class="col-sm-4">
           <input type="text" class="form-control pull-right" id="txtTotPrice" name="txtTotPrice" readonly value="<?php echo $tPrice;?>">
+        </div>
+
+        <label for="stock" class="col-sm-2 control-label">Stock</label>
+        <div class="col-sm-4">
+          <input type="number" class="form-control pull-right" id="stock" name="stock" value="<?php echo $stock;?>">
         </div>
 
   </div>  

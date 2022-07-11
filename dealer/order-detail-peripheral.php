@@ -59,11 +59,11 @@
         $delid = $_SESSION["del_id"]; 
         // $sql = "SELECT * FROM tbl_order_peripheral where `product`='peripharel' order by id desc";
         // echo "SELECT sum(qty) as qty1,sum(`gst_amount`) as gst1,sum(`total_price`) as total1,`order_date`,`remarks`,`order_status`,`payment_mode`,`orderid`,`attachment`,`status_date`,`id` FROM `tbl_order_peripheral` where `dealer_id`='$delid' AND `product`='peripharel' group BY orderid order by orderid";exit();
-        $sql = "SELECT sum(qty) as qty1,sum(`gst_amount`) as gst1,sum(`total_price`) as total1,`order_date`,`remarks`,`order_status`,`payment_mode`,`orderid`,`attachment`,`status_date`,`id` FROM `tbl_order_peripheral` where `dealer_id`='$delid' AND `product`='peripharel' group BY orderid order by orderid";
+        $sql = "SELECT sum(all_total) as tot,sum(qty) as qty1,sum(`gst_amount`) as gst1,sum(`total_price`) as total1,`order_date`,`remarks`,`order_status`,`payment_mode`,`orderid`,`attachment`,`status_date`,`id` FROM `tbl_order_peripheral` where `dealer_id`='$delid' AND `product`='peripharel' group BY orderid order by orderid";
         $query = $conn->query($sql);
           while($crow = $query->fetch_assoc()){
             // $get_attachment = mysqli_fetch_assoc(mysqli_query($conn , "SELECT * FROM `tbl_dealer_attachment`"));
-                                  
+                                  $d = $crow['tot'] + $crow['gst1'];
       echo "<tr><td style='text-align:center;'>
       <input type='hidden' style='width:20px;border-width:0px;border:none;background: transparent;' id='txtN' name='txtN' value='$crow[id]' readonly>$crow[id]</td>
       
@@ -76,11 +76,11 @@
       <td style='text-align:center;'>$crow[order_date]</td>
       <td style='text-align:center;'>$crow[qty1]</td>
       <td style='text-align:center;'>$crow[gst1]</td>
-      <td style='text-align:center;'>$crow[total1]</td>
+      <td style='text-align:center;'>$d</td>
 
       <td style='text-align:center;'>$crow[payment_mode]</td>
       <td style='text-align:center;'>$crow[order_status]</td>
-      <td style='text-align:center;'>$crow[remarks] / $crow[status_date]</td>
+      <td style='text-align:center;'>$crow[remarks]  $crow[status_date]</td>
       <td style='text-align:center;'>
       <a href='upload/$crow[attachment]' class='btn btn-xs btn-danger'>Download</a>
       </td>

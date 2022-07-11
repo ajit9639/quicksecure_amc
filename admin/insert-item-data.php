@@ -21,8 +21,9 @@ include 'includes/session.php';
 		$tGSTAmt= $_POST['txtGSTAmt']; 
 
  		$tProductType= $_POST['txtProductType'];
+ 		$stock= $_POST['stock'];
 
-		$sql = "insert into tbl_item (product,modalno,processor1,ram1,hddssd,os1,office1,graphics1,display1,color1,gst_per,gst_amt,price,excludingprice) values('$tProductType','$tModalNo','$tProcessor','$tRam','$thddSsd','$tOS','$tOffice','$tGraphics','$tDisplay','$tColor','$tGST','$tGSTAmt','$tPrice','$tExPrice')";
+		$sql = "insert into tbl_item (product,modalno,processor1,ram1,hddssd,os1,office1,graphics1,display1,color1,gst_per,gst_amt,price,excludingprice,stock) values('$tProductType','$tModalNo','$tProcessor','$tRam','$thddSsd','$tOS','$tOffice','$tGraphics','$tDisplay','$tColor','$tGST','$tGSTAmt','$tPrice','$tExPrice','$stock')";
 
 		if($conn->query($sql)){
 			//$_SESSION['success'] = 'Record inserted successfully';

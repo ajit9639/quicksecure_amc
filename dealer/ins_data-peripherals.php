@@ -23,10 +23,11 @@ $exclusive_price = $_POST['txtExPrice'];
 $gst_percentage = $_POST['txtGST'];
 $gst_amount = $_POST['txtGSTAmt'];
 $total_price = $_POST['txtTotPrice'];
+// $stock = $_POST['stock'];
 
  $sql = "INSERT INTO `tbl_demo_peripheral`(`ordrid`, `ordrdt`, `dealerid`, `product`, `modalno`,processor1,ram1, `qty`, `unit_price`, `inclusive_price`, `exclusive_price`, `gst_percentage`, `gst_amount`, `total_price`) VALUES
  ('$ordrid','$ordrdt','$dlrid','$product','$modalno','$processor1','$ram1','$qty','$unit_price','$inclusive_price','$exclusive_price','$gst_percentage','$gst_amount','$total_price')";
-
+// exit();
 //  $sql = "INSERT INTO tbl_demo (ordrdt,dealerid,product,modalno,processor1,ram1,hddssd,os1,graphics1,display1,qty,price,  txtPrice,txtExPrice,txtGST,txtGSTAmt,txtTotPrice) VALUES ('".$_POST['txtDate']."','$dlrid','".$_POST['txtProductType']."', '".$_POST['txtModelno']."', '".$_POST['txtProcessor']."', '".$_POST['txtRam']."', '".$_POST['txtHddSsd']."', '".$_POST['txtOS']."', '".$_POST['txtGraphics']."', '".$_POST['txtDisplay']."', '".$_POST['txtQTY']."', '".$_POST['txtPrice']."' ,          '".$_POST['txtExPrice']."','".$_POST['txtGST']."','".$_POST['txtGSTAmt']."','".$_POST['txtTotPrice']."')";
     
             if (mysqli_query($conn, $sql)) {

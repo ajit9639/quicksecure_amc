@@ -125,6 +125,7 @@ $sql1 = mysqli_query($conn , "SELECT * from `tbl_order_peripheral` where `orderi
 $i = 0;
 while($row2 = mysqli_fetch_assoc($sql1)){
     $all_total = $row2['exclusive_price'] * $row2['qty'];
+    
 ?>
                                                 <tr>
                                                     <td><?php echo $s ?> </td>

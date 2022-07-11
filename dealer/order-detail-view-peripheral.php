@@ -61,6 +61,7 @@
                 // exit();
                 $dlridd = $row['dealer_id'];
                 $date = $row['order_date'];
+                
                
                 // $pmmode = $row['payment_option'];
                 // $dlrname = $row['dealer_name'];
@@ -97,6 +98,7 @@
                                                             download="download"
                                                             class="btn btn-danger btn-xs">Download</a>
                                                     </td>
+                                                   
 
                                                 </tr>
 

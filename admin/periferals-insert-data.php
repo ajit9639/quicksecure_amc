@@ -12,7 +12,8 @@ include 'includes/session.php';
 		$tTotPrice= $_POST['txtTotPrice'];
 		$tBrandName= $_POST['txtBrandName'];
 		$tColorName= $_POST['txtColorName'];  
- $tExPrice= $_POST['txtExPrice']; 
+ 		$tExPrice= $_POST['txtExPrice']; 
+ 		$stock= $_POST['stock']; 
          $sql = "SELECT max(id) as mxid FROM tbl_periferals order by id desc";
         $query = $conn->query($sql);
           if($row = $query->fetch_assoc()){
@@ -21,7 +22,7 @@ include 'includes/session.php';
           }		
 
 
-		$sql = "insert into tbl_periferals (pcode,item_name,brand_name,color_name,price,exclusuveprice,gst,gstamt,totalamt) values('$pcode','$tItemName','$tBrandName','$tColorName','$tPrice','$tExPrice','$tGST','$tGSTAmt','$tTotPrice')";
+		$sql = "insert into tbl_periferals (pcode,item_name,brand_name,color_name,price,exclusuveprice,gst,gstamt,totalamt,stock) values('$pcode','$tItemName','$tBrandName','$tColorName','$tPrice','$tExPrice','$tGST','$tGSTAmt','$tTotPrice','$stock')";
 
 		if($conn->query($sql)){
 			//$_SESSION['success'] = 'Record inserted successfully';
