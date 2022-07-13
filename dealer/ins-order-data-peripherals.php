@@ -52,21 +52,24 @@ $ordrid = $dealer_id_name1.'-PH-'. ($tempid + 1);;
 		$total_price = $crow['total_price'];
 		$all_total = $crow['exclusive_price'] * $crow['qty'];
 
-
-
 		// $price2 = $crow['price'];
 		$pro= $crow['product'];
 
-// $tamt = $qty2 * $price2;
-$dlrname = $_SESSION['user'];
+		// $tamt = $qty2 * $price2;
+		$dlrname = $_SESSION['user'];
 
-     $sql = "INSERT INTO `tbl_order_peripheral`(`type`,`orderid`, `order_date`, `dealer_id`, `product`, `modalno`, `processor1`, `ram1`, `qty`, `unit_price`, `inclusive_price`, `exclusive_price`, `gst_percentage`, `gst_amount`, `total_price`, `payment_mode`, `remarks`, `attachment`, `order_status`,`all_total`) VALUES 
-	 ('dealer','$ordrid','$dt','$dealerid2','$pro','$modalno2','$processor2','$ram2','$qty2','$unit_price','$inclusive_price','$exclusive_price','$gst_percentage','$gst_amount','$total_price','','','','pending','$all_total')";
-// exit();
+		$get_all = mysqli_fetch_assoc(mysqli_query($conn , "SELECT * FROM `tbl_periferals` where `item_name`='$modalno2'"));
+		$final = $get_all['stock'] - $qty2;
+
+		mysqli_query($conn , "UPDATE `tbl_periferals` SET `stock`='$final' WHERE `item_name`='$modalno2'");
+
+     	 $sql = mysqli_query($conn , "INSERT INTO `tbl_order_peripheral`(`type`,`orderid`, `order_date`, `dealer_id`, `product`, `modalno`, `processor1`, `ram1`, `qty`, `unit_price`, `inclusive_price`, `exclusive_price`, `gst_percentage`, `gst_amount`, `total_price`, `payment_mode`, `remarks`, `attachment`, `order_status`,`all_total`) VALUES ('dealer','$ordrid','$dt','$dealerid2','$pro','$modalno2','$processor2','$ram2','$qty2','$unit_price','$inclusive_price','$exclusive_price','$gst_percentage','$gst_amount','$total_price','','','','pending','$all_total')");
+		// exit();
+
             if (mysqli_query($conn, $sql)) {
 
 				
-               echo "<script>alert('Record saved successfully')</script>";
+            //    echo "<script>alert('Record saved successfully')</script>";
                
             }else{echo $conn->error;}	
      }	   	
